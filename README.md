@@ -15,6 +15,7 @@
 - As a player, I want to see what cards other players have drawn so that I can try to make a better guess.
 - As a player, I want an elegant design exeperience so that I would rather use this app than a deck of cards.
 - As a player I want to be able to add more players mid way through the game
+- As a group of players, if there are more than 6 people I want to add a second deck of cards (there will never be more than 12)
 
 
 ##Wireframes
@@ -46,3 +47,9 @@ The current [wirefame][wireframelink] is desktop only
 ### Extra Features Sprint
 - [ ] As a group of players, I want to play on a computer, tablet, and phone so that I can play anywhere.
 - [ ] As a player I want to be able to add more players mid way through the game
+- [ ] As a group of players, if there are more than 6 people I want to add a second deck of cards (there will never be more than 12)
+
+##Pseudocode
+
+- When clicking the "lets get schwastey button," get the value of all the text input for player names
+- Display these values on the Game Board. If there is no value then display nothing.

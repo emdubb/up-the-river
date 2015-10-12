@@ -1,0 +1,28 @@
+.playerNameDiv h3 {
+	display: inline;
+}
+.playerName {
+	display: inline-block;
+	height: 2em;
+	width: 20em;
+	padding: .25em;
+	color: grey;
+	margin: 1em;
+}
+#ruleInput {
+	width: 25em;
+	height: 10em;
+}
+button {
+	height: 3em;
+	width: 15em;
+	border-radius: 1.5em;
+	background-color: #0D9AAD;
+	color: white;
+	outline: 0;
+	border: 0;
+	margin: 1em;
+}
+button:hover {
+	background-color: #157B89;
+}
