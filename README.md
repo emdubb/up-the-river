@@ -14,9 +14,15 @@
 - As a group of players, I want to play on a computer, tablet, and phone so that I can play anywhere.
 - As a player, I want to see what cards other players have drawn so that I can try to make a better guess.
 - As a player, I want an elegant design exeperience so that I would rather use this app than a deck of cards.
+- As a player I want to be able to add more players mid way through the game
 
 
 ##Wireframes
+
+The current [wirefame][wireframe] is desktop only
+
+
+[wireframe]: [http://x9fj2l.axshare.com]
 
 ##MVP + Planning
 ### Current Sprint (MVP)
@@ -30,10 +36,13 @@
 - [ ] As a group of players, after all four rounds are complete I want to see the cards on the river. If my cards match any of the cards in the left column I want to take drinks, if my cards match any of the cards in the right column I want to assign drinks to other players.
 - [ ] As a group of players, I want to see the top card and if I have a card with the same value I will follow the rule or punishment.
 
-### Sprint
+### Secondary Sprint
 - [ ] As a group of players, I want to be able to input each player upon starting a new game so that I can see names and cards for each person because drinking nicknames are fantastic.
 - [ ] As a player, I want to see what cards other players have drawn so that I can try to make a better guess.
 
 ### Design Sprint
-- [ ] As a group of players, I want to play on a computer, tablet, and phone so that I can play anywhere.
 - [ ] As a player, I want an elegant design exeperience so that I would rather use this app than a deck of cards.
+
+### Extra Features Sprint
+- [ ] As a group of players, I want to play on a computer, tablet, and phone so that I can play anywhere.
+- [ ] As a player I want to be able to add more players mid way through the game
