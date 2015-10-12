@@ -28,7 +28,7 @@ The current [wirefame][wireframelink] is desktop only
 ##MVP + Planning
 ### Current Sprint (MVP)
 - [ ] As a group of players, I want to be able to start a new game with the proper setup.
-- [ ] As a group of players, when I start a new game - I want to write a rule or punishment or randomly choose one.
+- [ ] As a group of players, when I start a new game - I want to write a rule or punishment.
 - [ ] As a player, on my first turn I want to guess if my card will be red or black.
 - [ ] As a player, on my second turn I want to guess if my card will be higher or lower than my first card.
 - [ ] As a player, on my third turn I want to guess if my card will be “in between”, “outside”, or “on the fence” of my first two cards.
@@ -48,6 +48,7 @@ The current [wirefame][wireframelink] is desktop only
 - [ ] As a group of players, I want to play on a computer, tablet, and phone so that I can play anywhere.
 - [ ] As a player I want to be able to add more players mid way through the game
 - [ ] As a group of players, if there are more than 6 people I want to add a second deck of cards (there will never be more than 12)
+- [ ] As a group of players, when I start a new game - I want to have the option to write a rule or punishment or randomly choose one.
 
 ##Pseudocode
 
