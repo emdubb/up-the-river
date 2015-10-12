@@ -19,10 +19,10 @@
 
 ##Wireframes
 
-The current [wirefame][wireframe] is desktop only
+The current [wirefame][wireframelink] is desktop only
 
 
-[wireframe]: [http://x9fj2l.axshare.com]
+[wireframelink]: http://x9fj2l.axshare.com
 
 ##MVP + Planning
 ### Current Sprint (MVP)
