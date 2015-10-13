@@ -28,7 +28,7 @@ The current [wirefame][wireframelink] is desktop only
 ##MVP + Planning
 ### Current Sprint (MVP)
 - [ ] As a group of players, I want to be able to start a new game with the proper setup.
-- [ ] As a group of players, when I start a new game - I want to write a rule or punishment.
+- [x] As a group of players, when I start a new game - I want to write a rule or punishment.
 - [ ] As a player, on my first turn I want to guess if my card will be red or black.
 - [ ] As a player, on my second turn I want to guess if my card will be higher or lower than my first card.
 - [ ] As a player, on my third turn I want to guess if my card will be “in between”, “outside”, or “on the fence” of my first two cards.
@@ -53,4 +53,5 @@ The current [wirefame][wireframelink] is desktop only
 ##Pseudocode
 
 - When clicking the "lets get schwastey button," get the value of all the text input for player names
-- Display these values on the Game Board. If there is no value then display nothing.
+-- Display these values on the Game Board. If there is no value then display nothing.
+- On clicking the red button, randomly select a card. If the card has a class of red, then assign a 

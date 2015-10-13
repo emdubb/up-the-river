@@ -9,9 +9,32 @@
 	color: grey;
 	margin: 1em;
 }
+#playerList {
+	display: inline;
+	float: left;
+	margin: 0em 2em;
+	width: 48%;
+}
 #ruleInput {
 	width: 25em;
 	height: 10em;
+}
+#red {
+	width: 3em;
+	height: 3em;
+	border-radius: 1.5em;
+	background-color: red;
+}
+#black {
+	width: 3em;
+	height: 3em;
+	border-radius: 1.5em;
+	background-color: black;
+}
+#cardArea {
+	display: inline;
+	float: right;
+	width: 40%;
 }
 button {
 	height: 3em;
