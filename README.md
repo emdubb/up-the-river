@@ -54,4 +54,5 @@ The current [wirefame][wireframelink] is desktop only
 
 - When clicking the "lets get schwastey button," get the value of all the text input for player names
 -- Display these values on the Game Board. If there is no value then display nothing.
+- Determine which player's turn it is
 - On clicking the red button, randomly select a card. If the card has a class of red, then assign a 

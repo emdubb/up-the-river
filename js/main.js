@@ -1,6 +1,7 @@
 console.log("main.js loaded");
 
 var playerPoints = [0, 0, 0, 0, 0, 0]
+var counter, currentTurn;
 //put variable above and then return the value on click
 
 function startGame() {
@@ -32,8 +33,7 @@ function startGame() {
 	//var $playersArray = [$playerName1, $playerName2, $playerName3, $playerName4, $playerName5, $playerName6];
 	console.log($playersArray);
 
-	$('.playerNameDiv, #beginGame').hide(function() {
-	});
+	$('.playerNameDiv, #beginGame').hide("slow");
 	$('#description').text("Make a rule or punishment for the winner of the game to follow. Be as nice or mean as you dare!");
 	$('#playerArea').append($('<input id="ruleInput"> <div id="ruleButtons">'));
 	$('#ruleButtons').append($('<button id="myRuleButton"> My Rule is Awesome </button>'));
@@ -53,12 +53,40 @@ function startGame() {
 			console.log($playersArray[i]);
 		}
 		//Determine Turn
+		counter = 0;
 		var nextTurn = function(){
-			var counter = 0;
-			$playersArray.forEach()
+			$playersArray.forEach(function(event, index){
+				if (event === currentTurn) counter++;
+				if (counter === $playersArray.length) {
+					counter = 0;
+				}
+			});
+			switch (counter) {
+				case 1:
+					currentTurn = $playersArray[1];
+					break;
+				case 2:
+					currentTurn = $playersArray[2];
+					break;
+				case 3:
+					currentTurn = $playersArray[3];
+					break;
+				case 4:
+					currentTurn = $playersArray[4];
+					break;
+				case 5:
+					currentTurn = $playersArray[5];
+					break;
+				default:
+					currentTurn = $playersArray[0];
+					break;
+			}
+			console.log('current turn is ' + currentTurn);
+			console.log('counter is ' + counter);
 		}
 
-		//Round 1
+//Round 1 ===============================================================================
+
 		var $redButton = $('<div id="red">');
 		var $blackButton = $('<div id="black">');
 
@@ -66,18 +94,36 @@ function startGame() {
 		$('#cardArea').append($redButton);
 		$('#cardArea').append($blackButton);
 
+		//Make card
 		var $mainCard = $('<div id="deckDefault" class="card xlarge back">');
 		$('#cardArea').append($mainCard);
-		$mainCard.click(function(){
+
+		//Draw a card
+		var drawCard = function(){
 			var lastClass = $mainCard.attr('class').split(' ').pop();
 			$mainCard.removeClass(lastClass);
 			$mainCard.addClass(pickRandom);
 			//$mainCard.removeClass('back');
-		});
+		}
+
+		var compareColor = function() {
+		 	if($mainCard.attr('class') = 
+		 		"dA"||"dK"||"dQ"||"dJ"||"d10"||"d09"||"d08"||"d07"||"d06"||"d05"||"d04"||"d03"||"d02"|| 
+		 		"hA"||"hK"||"hQ"||"hJ"||"h10"||"h09"||"h08"||"h07"||"h06"||"h05"||"h04"||"h03"||"h02"){
+		 		console.log("card is red");
+		 	} else {
+		 		console.log("card is black");
+		 	}}
+
+		 $redButton.click(function() {
+		 	drawCard();
+		 	nextTurn();
+		 	compareColor();
+		 });
+		// $blackButton.click(drawCard(););
 		
 	})
 }
-
 
 $('#beginGame').click(startGame);
 
