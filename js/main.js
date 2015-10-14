@@ -1,7 +1,7 @@
 console.log("main.js loaded");
 
 var playerPoints = [0, 0, 0, 0, 0, 0]
-var counter, currentTurn, cardColor;
+var counter, currentTurn, cardColor, $colorTarget;
 var $mainCard = $('<div id="deckDefault" class="card xlarge back">');
 var redCards = ["dA","dK","dQ","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hK","hQ","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sK","sQ","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
@@ -139,25 +139,23 @@ function startGame() {
 		 	drawCard();
 		 	nextTurn();
 		 	compareColor();
-		 	//var playerColorGuess = function() {
 			console.log(evt.target);
-			function () {
-				if ((evt.target).hasClass("red") && cardColor === "red"){
+			$colorTarget = $(evt.target);
+			
+				if (($colorTarget).hasClass("red") && cardColor === "red"){
 					console.log("Red was the right guess");
-				} else if ((evt.target).hasClass("red") && cardColor === "black") {
+				} else if (($colorTarget).hasClass("red") && cardColor === "black") {
 					console.log("Red was the wrong guess");
-				} else if ((evt.target).hasClass("black") && cardColor === "black") {
+				} else if (($colorTarget).hasClass("black") && cardColor === "black") {
 					console.log("black was the right guess");
-				} else if ((evt.target).hasClass("black") && cardColor === "red") {
+				} else if (($colorTarget).hasClass("black") && cardColor === "red") {
 					console.log("black was the wrong guess");
 				} else {
-					console.log("you fucked up, bruh")
+					console.log("you fucked up, bruh");
 				}
-			}
-			}
+			
+			
 		 });
-		// $blackButton.click(drawCard(););
-		
 	})
 }
 
