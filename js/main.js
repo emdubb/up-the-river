@@ -112,8 +112,8 @@ var determineTurn = function() {
 				currentTurn = $playersArray[0];
 				break;
 		}
-	console.log('current turn is ' + currentTurn);
-	console.log('counter is ' + counter);
+	// console.log('current turn is ' + currentTurn);
+	// console.log('counter is ' + counter);
 }
 
 var setupMainCard = function() {
@@ -204,19 +204,19 @@ var playRound2 = function() {
 		if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "low"){
 					console.log("Lower was the right guess");
 					//currentTurn[1] = 0;
-				} else if (($colorTarget).hasClass("lower") && cardHighOrLow === "high") {
+				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "high") {
 					console.log("Lower was the wrong guess");
 					currentTurn[1] = +1;
-				} else if (($colorTarget).hasClass("lower") && cardHighOrLow === "even") {
+				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "even") {
 					console.log("Its a tie (lguess)");
 					currentTurn[1] = +2; 
-				} else if (($colorTarget).hasClass("higher") && cardHighOrLow === "high") {
+				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "high") {
 					console.log("Higher was the right guess");
 					//currentTurn[1] = 0;
-				} else if (($colorTarget).hasClass("higher") && cardHighOrLow === "low") {
+				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "low") {
 					console.log("Higher was the wrong guess");
 					currentTurn[1] = +1;
-				} else if (($colorTarget).hasClass("higher") && cardHighOrLow === "even") {
+				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "even") {
 					console.log("Its a tie (hguess)");
 					currentTurn[1] = +2;
 				}
@@ -229,6 +229,7 @@ var playRound2 = function() {
 
 
 var compareLowerHigher = function() {
+	console.log("compareLowerHigher is running");
 	var $cards = $(".player" + counter + " div");
 
 	var card1 = cardNumbers[$($cards[0]).attr("class").split(" ")[1]];
