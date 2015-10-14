@@ -19,13 +19,13 @@
 	width: 25em;
 	height: 10em;
 }
-#red {
+.red {
 	width: 3em;
 	height: 3em;
 	border-radius: 1.5em;
 	background-color: red;
 }
-#black {
+.black {
 	width: 3em;
 	height: 3em;
 	border-radius: 1.5em;

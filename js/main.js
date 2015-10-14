@@ -90,8 +90,8 @@ function startGame() {
 
 //Round 1 ===============================================================================
 
-		var $redButton = $('<div id="red">').addClass("colorButtons");
-		var $blackButton = $('<div id="black">').addClass("colorButtons");
+		var $redButton = $('<div class="red">').addClass("colorButtons");
+		var $blackButton = $('<div class="black">').addClass("colorButtons");
 
 		$('#playerArea').append('<div id="cardArea">');
 		$('#cardArea').append($redButton);
@@ -118,11 +118,13 @@ function startGame() {
 			}
 			for (i=0; i < blackCards.length; i++) {
 				if ($mainCard.hasClass(blackCards[i])) {
-					console.log('card is black my nigga');
+					console.log('card is black dawg');
 					cardColor = "black";
 				}	
 			}
 		}
+
+		
 
 		// var compareColor = function() {
 		//  	if($mainCard.hasClass(
@@ -137,7 +139,22 @@ function startGame() {
 		 	drawCard();
 		 	nextTurn();
 		 	compareColor();
-		 	console.log(evt.target);
+		 	//var playerColorGuess = function() {
+			console.log(evt.target);
+			function () {
+				if ((evt.target).hasClass("red") && cardColor === "red"){
+					console.log("Red was the right guess");
+				} else if ((evt.target).hasClass("red") && cardColor === "black") {
+					console.log("Red was the wrong guess");
+				} else if ((evt.target).hasClass("black") && cardColor === "black") {
+					console.log("black was the right guess");
+				} else if ((evt.target).hasClass("black") && cardColor === "red") {
+					console.log("black was the wrong guess");
+				} else {
+					console.log("you fucked up, bruh")
+				}
+			}
+			}
 		 });
 		// $blackButton.click(drawCard(););
 		
