@@ -25,12 +25,12 @@ var cardNumbers =[	["h02", "d02", "c02", "s02"],
 //============================GLOBAL FUNCTIONS=====================================
 var getPlayerNames = function() {
 	$playersArray = []
-	$playerName1 = [$('#player-name1').val()]
-	$playerName2 = [$('#player-name2').val()]
-	$playerName3 = [$('#player-name3').val()]
-	$playerName4 = [$('#player-name4').val()]
-	$playerName5 = [$('#player-name5').val()]
-	$playerName6 = [$('#player-name6').val()]
+	$playerName1 = [$('#player-name1').val(), 0]
+	$playerName2 = [$('#player-name2').val(), 0]
+	$playerName3 = [$('#player-name3').val(), 0]
+	$playerName4 = [$('#player-name4').val(), 0]
+	$playerName5 = [$('#player-name5').val(), 0]
+	$playerName6 = [$('#player-name6').val(), 0]
 	if ($playerName1[0]) {
 		$playersArray.push($playerName1)
 	} 
@@ -71,10 +71,9 @@ var setupFirstRound = function() {
 
 		$('#playerArea').append('<div id="playerList">');
 		for (var i = 0; i < $playersArray.length; i++) {
-			//$('#playerList').append$('<div>').addClass("player" + i);
 			$($('<div>').addClass("player" + i)).appendTo('#playerList');
-			$('.player' + i).append($playersArray[i]);
-			//($('<p class="points">Points:</p>')).insertAfter($('#playerList h3:nth-child(' + (i++) + ')'));
+			$($('<h3>').text($playersArray[i][0])).appendTo('.player' + i);
+			$($('<p>').text("Points: " + $playersArray[i][1])).appendTo('.player' + i);
 			console.log($playersArray[i]);
 		}
 		$redButton = $('<div class="red">').addClass("colorButtons");
@@ -143,16 +142,16 @@ var playRound1 = function() {
 
 				if (($colorTarget).hasClass("red") && cardColor === "red"){
 					console.log("Red was the right guess");
-					currentTurn.push(0);
+					currentTurn[1] = 0;
 				} else if (($colorTarget).hasClass("red") && cardColor === "black") {
 					console.log("Red was the wrong guess");
-					currentTurn.push(1);
+					currentTurn[1] = 1;
 				} else if (($colorTarget).hasClass("black") && cardColor === "black") {
 					console.log("black was the right guess");
-					currentTurn.push(0);
+					currentTurn[1] = 0;
 				} else if (($colorTarget).hasClass("black") && cardColor === "red") {
 					console.log("black was the wrong guess");
-					currentTurn.push(1);
+					currentTurn[1] = 1;
 				}
 				//move to next round
 				if (counter > ($playersArray.length -2)) {
