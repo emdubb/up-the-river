@@ -34,7 +34,6 @@ var getPlayerNames = function() {
 	if ($playerName6[0]) {
 		$playersArray.push($playerName6)
 	}
-	//var $playersArray = [$playerName1, $playerName2, $playerName3, $playerName4, $playerName5, $playerName6];
 	console.log($playersArray);
 }
 
@@ -131,6 +130,7 @@ var compareColor = function() {
 	}
 }
 
+//=========================RUN GAME========================================
 function startGame() {
 	getPlayerNames();
 	getRule();
@@ -141,7 +141,7 @@ function startGame() {
 	 	round1();
 	 	$('.colorButtons').click(function(evt) {
 		 	drawCard();
-		 	nextTurn();
+		 	determineTurn();
 		 	compareColor();
 			console.log(evt.target);
 			$colorTarget = $(evt.target);
