@@ -87,7 +87,7 @@ var determineTurn = function() {
 		counter++;
 		//reset round of turns
 		if (counter > ($playersArray.length - 1)) {
-			counter = -1;
+			counter = 0;
 		}
 		// $playersArray.forEach(function(event, index){
 		// 	if (event === currentTurn) counter++ 
@@ -132,7 +132,8 @@ var drawCard = function(){
 }
 var addPlayerCard = function() {
 	//-1 is player1 at index 0
-	$($('<div class="card">').addClass(lastClass)).appendTo('.player' + counter)
+	$($('<div class="card">').addClass(lastClass)).appendTo('.player' + counter);
+	console.log("assign card to player");
 }
 
 var playRound1 = function() {
