@@ -1,15 +1,15 @@
 console.log("main.js loaded");
 //==========================GLOBAL VARIABLES=======================================
 var playerPoints = [0, 0, 0, 0, 0, 0]
-var counter, currentTurn, cardColor, $colorTarget;
-var $mainCard = $('<div id="deckDefault" class="card xlarge back">');
+var counter, currentTurn, cardColor, $colorTarget
+var $mainCard = $('<div id="deckDefault" class="card xlarge back">')
 var redCards = ["dA","dK","dQ","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hK","hQ","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sK","sQ","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 var $playersArray, $playerName1, $playerName2, $playerName3, $playerName4, $playerName5, $playerName6
 var $gameRule, $redButton, $blackButton
 //============================GLOBAL FUNCTIONS=====================================
 var getPlayerNames = function() {
-	$playersArray = [];
+	$playersArray = []
 	$playerName1 = [$('#player-name1').val()]
 	$playerName2 = [$('#player-name2').val()]
 	$playerName3 = [$('#player-name3').val()]
@@ -54,13 +54,14 @@ var setupFirstRound = function() {
 		$('#ruleInput, #ruleButtons').hide("slow");
 		$('#description').text("Will your card be red or black? Select a color to choose");
 
-		$('#playerArea').append('<div id="playerList">')
+		$('#playerArea').append('<div id="playerList">');
 		for (var i = 0; i < $playersArray.length; i++) {
 			$('#playerList').append($('<h3>').append($playersArray[i]));
 			//($('<p class="points">Points:</p>')).insertAfter($('#playerList h3:nth-child(' + (i++) + ')'));
 			console.log($playersArray[i]);
-	}
-//}
+		}
+	//}
+}
 
 var determineTurn = function() {
 		counter = 0;
@@ -91,61 +92,54 @@ var determineTurn = function() {
 					currentTurn = $playersArray[0];
 					break;
 			}
-			console.log('current turn is ' + currentTurn);
-			console.log('counter is ' + counter);
+		}
+	console.log('current turn is ' + currentTurn);
+	console.log('counter is ' + counter);
 }
+
+var setupBoard = function() {
+	$('#playerArea').append('<div id="cardArea">');
+	$('#cardArea').append($mainCard);
+}
+
 var drawCard = function(){
 			var lastClass = $mainCard.attr('class').split(' ').pop();
 			$mainCard.removeClass(lastClass);
 			$mainCard.addClass(pickRandom);
-			//$mainCard.removeClass('back');
-		}
+}
 
 var round1 = function() {
+		$redButton = $('<div class="red">').addClass("colorButtons");
+		$blackButton = $('<div class="black">').addClass("colorButtons");
+		$('#cardArea').append($redButton);
+		$('#cardArea').append($blackButton);
+		compareColor();
+}
 
+var compareColor = function() {
+	for (i=0; i < redCards.length; i++) {
+		if ($mainCard.hasClass(redCards[i])) {
+			console.log('card is red AF');
+			cardColor = "red";
+		}	
+	}
+	for (i=0; i < blackCards.length; i++) {
+		if ($mainCard.hasClass(blackCards[i])) {
+			console.log('card is black dawg');
+			cardColor = "black";
+		}	
+	}
 }
 
 function startGame() {
 	getPlayerNames();
 	getRule();
-	$('#myRuleButton').click(setupFirstRound);
-	determineTurn();
-		
-		
-
-//Round 1 ===============================================================================
-
-		$redButton = $('<div class="red">').addClass("colorButtons");
-		$blackButton = $('<div class="black">').addClass("colorButtons");
-
-		$('#playerArea').append('<div id="cardArea">');
-		$('#cardArea').append($redButton);
-		$('#cardArea').append($blackButton);
-
-		//Make card
-		
-		$('#cardArea').append($mainCard);
-
-		var compareColor = function() {
-			for (i=0; i < redCards.length; i++) {
-				if ($mainCard.hasClass(redCards[i])) {
-					console.log('card is red AF');
-					cardColor = "red";
-				}	
-			}
-			for (i=0; i < blackCards.length; i++) {
-				if ($mainCard.hasClass(blackCards[i])) {
-					console.log('card is black dawg');
-					cardColor = "black";
-				}	
-			}
-		}
-
-		// var round1 = function() {
-		// 	currentTurn
-		// }
-
-		 $('.colorButtons').click(function(evt) {
+	$('#myRuleButton').click(function() {
+	 	setupBoard();
+	 	setupFirstRound();
+	 	determineTurn();
+	 	round1();
+	 	$('.colorButtons').click(function(evt) {
 		 	drawCard();
 		 	nextTurn();
 		 	compareColor();
@@ -163,11 +157,11 @@ function startGame() {
 				} else {
 					console.log("you fucked up, bruh");
 				}
-			
-			
 		 });
-	})
+	});
 }
+
+
 
 $('#beginGame').click(startGame);
 
