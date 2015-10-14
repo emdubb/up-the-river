@@ -7,14 +7,22 @@ var redCards = ["dA","dK","dQ","dJ","d10","d09","d08","d07","d06","d05","d04","d
 var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sK","sQ","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 //put variable above and then return the value on click
 
+	var $playersArray
+	var $playerName1
+	var $playerName2
+	var $playerName3
+	var $playerName4
+	var $playerName5
+	var $playerName6
+
 function startGame() {
-	var $playersArray = [];
-	var $playerName1 = $('#player-name1').val();
-	var $playerName2 = $('#player-name2').val();
-	var $playerName3 = $('#player-name3').val();
-	var $playerName4 = $('#player-name4').val();
-	var $playerName5 = $('#player-name5').val();
-	var $playerName6 = $('#player-name6').val();
+	$playersArray = [];
+	$playerName1 = $('#player-name1').val();
+	$playerName2 = $('#player-name2').val();
+	$playerName3 = $('#player-name3').val();
+	$playerName4 = $('#player-name4').val();
+	$playerName5 = $('#player-name5').val();
+	$playerName6 = $('#player-name6').val();
 	if ($playerName1) {
 		$playersArray.push($playerName1)
 	} 
@@ -124,16 +132,9 @@ function startGame() {
 			}
 		}
 
-		
-
-		// var compareColor = function() {
-		//  	if($mainCard.hasClass(
-		//  		//"dA"||"dK"||"dQ"||"dJ"||"d10"||"d09"||"d08"||"d07"||"d06"||"d05"||"d04"||"d03"||"d02"|| 
-		//  		//"hA"||"hK"||"hQ"||"hJ"||"h10"||"h09"||"h08"||"h07"||"h06"||"h05"||"h04"||"h03"||"h02")){
-		//  		console.log("card is red");
-		//  	} else {
-		//  		console.log("card is black");
-		//  	}}
+		var round1 = function() {
+			currentTurn
+		}
 
 		 $('.colorButtons').click(function(evt) {
 		 	drawCard();
