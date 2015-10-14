@@ -20,16 +20,22 @@
 	height: 10em;
 }
 .red {
-	width: 3em;
-	height: 3em;
-	border-radius: 1.5em;
 	background-color: red;
 }
 .black {
+	background-color: black;
+}
+.black, .red, .higher, .lower {
 	width: 3em;
 	height: 3em;
 	border-radius: 1.5em;
+}
+.higherLowerButtons {
 	background-color: black;
+	color: white;
+}
+.higherLowerButtons:hover {
+	background-color: grey;
 }
 #cardArea {
 	display: inline;
