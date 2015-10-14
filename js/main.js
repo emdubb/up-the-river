@@ -8,6 +8,7 @@ var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04",
 //put variable above and then return the value on click
 
 var $playersArray, $playerName1, $playerName2, $playerName3, $playerName4, $playerName5, $playerName6
+var $gameRule
 
 var getPlayerNames = function() {
 		$playersArray = [];
@@ -46,11 +47,10 @@ var getRule = function() {
 	$('#ruleButtons').append($('<button id="myRuleButton"> My Rule is Awesome </button>'));
 	//<button id="randomRule"> Randomize Me Bro</button>
 }
-function startGame() {
-	getPlayerNames();
-	getRule();
+
+var setupFirstRound = function() {
 	$('#myRuleButton').click(function() {
-		var $gameRule = $('#ruleInput').val();
+		$gameRule = $('#ruleInput').val();
 		console.log($gameRule);
 
 		$('#ruleInput, #ruleButtons').hide("slow");
@@ -61,7 +61,14 @@ function startGame() {
 			$('#playerList').append($('<h3>').append($playersArray[i]));
 			//($('<p class="points">Points:</p>')).insertAfter($('#playerList h3:nth-child(' + (i++) + ')'));
 			console.log($playersArray[i]);
-		}
+	}
+}
+
+
+function startGame() {
+	getPlayerNames();
+	getRule();
+	
 		//Determine Turn
 		counter = 0;
 		var nextTurn = function(){
