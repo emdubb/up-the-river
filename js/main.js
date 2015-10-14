@@ -8,6 +8,20 @@ var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04",
 var $playersArray, $playerName1, $playerName2, $playerName3, $playerName4, $playerName5, $playerName6
 var $gameRule, $redButton, $blackButton, $lowerButton, $higherButton
 var counter = -1;
+var cardNumbers =[	["h02", "d02", "c02", "s02"],
+					["h03", "d03", "c03", "s03"],
+					["h04", "d04", "c04", "s04"],
+					["h05", "d05", "c05", "s05"],
+					["h06", "d06", "c06", "s06"],
+					["h07", "d07", "c07", "s07"],
+					["h08", "d08", "c08", "s08"],
+					["h09", "d09", "c09", "s09"],
+					["h10", "d10", "c10", "s10"],
+					["hJ", "dJ", "cJ", "sJ"],
+					["hQ", "dQ", "cQ", "sQ"],
+					["hK", "dK", "cK", "sK"],
+					["hA", "dA", "cA", "sA"]	]
+
 //============================GLOBAL FUNCTIONS=====================================
 var getPlayerNames = function() {
 	$playersArray = []
@@ -141,6 +155,7 @@ var playRound1 = function() {
 				//move to next round
 				if (counter > ($playersArray.length -2)) {
 				setupSecondRound();
+				playRound2();
 				//$('#playerArea').append('<button class="nextRound">We wanna drink more!</button>');
 				}
 			 });
@@ -173,9 +188,27 @@ var setupSecondRound = function() {
 }
 
 var playRound2 = function() {
-	$('.higherLowerButtons').click(function(){
-		console.log("Start round 2 mofo");
+	$('.higherLowerButtons').click(function(evt){
+		console.log("Start round 2");
+		drawCard();
+		determineTurn();
+		compareLowerHigher();
 	});
+}
+
+var compareLowerHigher = function() {
+	for (i=0; i < redCards.length; i++) {
+	if ($mainCard.hasClass(redCards[i])) {
+			//console.log('card is red AF');
+			cardColor = "red";
+		}	
+	}
+	for (i=0; i < blackCards.length; i++) {
+		if ($mainCard.hasClass(blackCards[i])) {
+			//console.log('card is black dawg');
+			cardColor = "black";
+		}	
+	}
 }
 
 //=========================RUN GAME========================================
@@ -187,7 +220,7 @@ function startGame() {
 	 	setupFirstRound();
 	 	playRound1();
 	});
-	playRound2();
+	
 }
 
 
