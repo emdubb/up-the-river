@@ -1,12 +1,13 @@
 console.log("main.js loaded");
 //==========================GLOBAL VARIABLES=======================================
 //var playerPoints = [0, 0, 0, 0, 0, 0]
-var counter, currentTurn, cardColor, $colorTarget
+var currentTurn, cardColor, $colorTarget
 var $mainCard = $('<div id="deckDefault" class="card xlarge back">')
 var redCards = ["dA","dK","dQ","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hK","hQ","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sK","sQ","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 var $playersArray, $playerName1, $playerName2, $playerName3, $playerName4, $playerName5, $playerName6
 var $gameRule, $redButton, $blackButton
+var counter = -1;
 //============================GLOBAL FUNCTIONS=====================================
 var getPlayerNames = function() {
 	$playersArray = []
@@ -68,8 +69,9 @@ var setupFirstRound = function() {
 
 var determineTurn = function() {
 		counter++;
-		if (counter > $playersArray.length) {
+		if (counter > ($playersArray.length - 1)) {
 			counter = -1;
+			$('#playerArea').append('<button class="nextRound">We wanna drink more!</button>');
 		}
 		// $playersArray.forEach(function(event, index){
 		// 	if (event === currentTurn) counter++ 
@@ -101,7 +103,7 @@ var determineTurn = function() {
 	console.log('counter is ' + counter);
 }
 
-var setupBoard = function() {
+var setupMainCard = function() {
 	$('#playerArea').append('<div id="cardArea">');
 	$('#cardArea').append($mainCard);
 }
@@ -111,30 +113,35 @@ var drawCard = function(){
 			$mainCard.removeClass(lastClass);
 			$mainCard.addClass(pickRandom);
 }
-counter = -1;
-var round1Turn = function() {
+
+var playRound1 = function() {
 		//
 			$('.colorButtons').click(function(evt) {
 			 	drawCard();
 			 	determineTurn();
 			 	compareColor();
-				console.log(evt.target);
+				//console.log(evt.target);
+
 				$colorTarget = $(evt.target);
-					if (($colorTarget).hasClass("red") && cardColor === "red"){
-						console.log("Red was the right guess");
-						currentTurn.push(0);
-					} else if (($colorTarget).hasClass("red") && cardColor === "black") {
-						console.log("Red was the wrong guess");
-						currentTurn.push(1);
-					} else if (($colorTarget).hasClass("black") && cardColor === "black") {
-						console.log("black was the right guess");
-						currentTurn.push(0);
-					} else if (($colorTarget).hasClass("black") && cardColor === "red") {
-						console.log("black was the wrong guess");
-						currentTurn.push(1);
-					}
+
+				if (($colorTarget).hasClass("red") && cardColor === "red"){
+					console.log("Red was the right guess");
+					currentTurn.push(0);
+				} else if (($colorTarget).hasClass("red") && cardColor === "black") {
+					console.log("Red was the wrong guess");
+					currentTurn.push(1);
+				} else if (($colorTarget).hasClass("black") && cardColor === "black") {
+					console.log("black was the right guess");
+					currentTurn.push(0);
+				} else if (($colorTarget).hasClass("black") && cardColor === "red") {
+					console.log("black was the wrong guess");
+					currentTurn.push(1);
+				}
+				
 			 });
 }
+
+//Round 1 compare color
 var compareColor = function() {
 	for (i=0; i < redCards.length; i++) {
 		if ($mainCard.hasClass(redCards[i])) {
@@ -150,16 +157,19 @@ var compareColor = function() {
 	}
 }
 
+var setupSecondRound = function() {
+	
+}
+
 //=========================RUN GAME========================================
 function startGame() {
 	getPlayerNames();
 	getRule();
 	$('#myRuleButton').click(function() {
-	 	setupBoard();
+	 	setupMainCard();
 	 	setupFirstRound();
-	 	round1Turn();
+	 	playRound1();
 
-	 	//$playersArray.forEach(round1Turn);
 	});
 }
 
