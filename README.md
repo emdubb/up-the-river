@@ -34,7 +34,7 @@ The current [wirefame][wireframelink] is desktop only
 - [ ] As a player, on my third turn I want to guess if my card will be “in between”, “outside”, or “on the fence” of my first two cards.
 - [ ] As a player, on my fourth turn I want to guess what suit my card will be.
 - [ ] As a player, I want to know if I won or lost the round. 
-- [x]As a player, if I lost then I want to receive a point. If I won then I do not want to recieve a point.
+- [x] As a player, if I lost then I want to receive a point. If I won then I do not want to recieve a point.
 - [ ] As a group of players, after all four rounds are complete I want to see the cards on the river. If my cards match any of the cards in the left column I want to take drinks, if my cards match any of the cards in the right column I want to assign drinks to other players.
 - [ ] As a group of players, I want to see the top card and if I have a card with the same value I will follow the rule or punishment.
 
