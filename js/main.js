@@ -1,7 +1,7 @@
 console.log("main.js loaded");
 //==========================GLOBAL VARIABLES=======================================
 //var playerPoints = [0, 0, 0, 0, 0, 0]
-var currentTurn, cardColor, $colorTarget
+var currentTurn, cardColor, $colorTarget, lastClass
 var $mainCard = $('<div id="deckDefault" class="card xlarge back">')
 var redCards = ["dA","dK","dQ","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hK","hQ","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sK","sQ","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
@@ -73,7 +73,7 @@ var setupFirstRound = function() {
 		for (var i = 0; i < $playersArray.length; i++) {
 			$($('<div>').addClass("player" + i)).appendTo('#playerList');
 			$($('<h3>').text($playersArray[i][0])).appendTo('.player' + i);
-			$($('<p>').text("Points: " + $playersArray[i][1])).appendTo('.player' + i);
+			$($('<p>').text("Points: ")).appendTo('.player' + i);
 			console.log($playersArray[i]);
 		}
 		$redButton = $('<div class="red">').addClass("colorButtons");
@@ -125,9 +125,14 @@ var setupMainCard = function() {
 }
 
 var drawCard = function(){
-			var lastClass = $mainCard.attr('class').split(' ').pop();
+			lastClass = $mainCard.attr('class').split(' ').pop();
 			$mainCard.removeClass(lastClass);
 			$mainCard.addClass(pickRandom);
+			lastClass = $mainCard.attr('class').split(' ').pop();
+}
+var addPlayerCard = function() {
+	//-1 is player1 at index 0
+	$($('<div class="card">').addClass(lastClass)).appendTo('.player' + counter)
 }
 
 var playRound1 = function() {
@@ -135,6 +140,7 @@ var playRound1 = function() {
 			$('.colorButtons').click(function(evt) {
 			 	drawCard();
 			 	determineTurn();
+			 	addPlayerCard();
 			 	compareColor();
 				//console.log(evt.target);
 
@@ -193,6 +199,7 @@ var playRound2 = function() {
 		console.log("Start round 2");
 		drawCard();
 		determineTurn();
+		addPlayerCard();
 		//compareLowerHigher();
 	});
 }
