@@ -1,7 +1,10 @@
 console.log("main.js loaded");
 
 var playerPoints = [0, 0, 0, 0, 0, 0]
-var counter, currentTurn;
+var counter, currentTurn, cardColor;
+var $mainCard = $('<div id="deckDefault" class="card xlarge back">');
+var redCards = ["dA","dK","dQ","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hK","hQ","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
+var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sK","sQ","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 //put variable above and then return the value on click
 
 function startGame() {
@@ -87,15 +90,15 @@ function startGame() {
 
 //Round 1 ===============================================================================
 
-		var $redButton = $('<div id="red">');
-		var $blackButton = $('<div id="black">');
+		var $redButton = $('<div id="red">').addClass("colorButtons");
+		var $blackButton = $('<div id="black">').addClass("colorButtons");
 
 		$('#playerArea').append('<div id="cardArea">');
 		$('#cardArea').append($redButton);
 		$('#cardArea').append($blackButton);
 
 		//Make card
-		var $mainCard = $('<div id="deckDefault" class="card xlarge back">');
+		
 		$('#cardArea').append($mainCard);
 
 		//Draw a card
@@ -107,18 +110,34 @@ function startGame() {
 		}
 
 		var compareColor = function() {
-		 	if($mainCard.attr('class') = 
-		 		"dA"||"dK"||"dQ"||"dJ"||"d10"||"d09"||"d08"||"d07"||"d06"||"d05"||"d04"||"d03"||"d02"|| 
-		 		"hA"||"hK"||"hQ"||"hJ"||"h10"||"h09"||"h08"||"h07"||"h06"||"h05"||"h04"||"h03"||"h02"){
-		 		console.log("card is red");
-		 	} else {
-		 		console.log("card is black");
-		 	}}
+			for (i=0; i < redCards.length; i++) {
+				if ($mainCard.hasClass(redCards[i])) {
+					console.log('card is red AF');
+					cardColor = "red";
+				}	
+			}
+			for (i=0; i < blackCards.length; i++) {
+				if ($mainCard.hasClass(blackCards[i])) {
+					console.log('card is black my nigga');
+					cardColor = "black";
+				}	
+			}
+		}
 
-		 $redButton.click(function() {
+		// var compareColor = function() {
+		//  	if($mainCard.hasClass(
+		//  		//"dA"||"dK"||"dQ"||"dJ"||"d10"||"d09"||"d08"||"d07"||"d06"||"d05"||"d04"||"d03"||"d02"|| 
+		//  		//"hA"||"hK"||"hQ"||"hJ"||"h10"||"h09"||"h08"||"h07"||"h06"||"h05"||"h04"||"h03"||"h02")){
+		//  		console.log("card is red");
+		//  	} else {
+		//  		console.log("card is black");
+		//  	}}
+
+		 $('.colorButtons').click(function(evt) {
 		 	drawCard();
 		 	nextTurn();
 		 	compareColor();
+		 	console.log(evt.target);
 		 });
 		// $blackButton.click(drawCard(););
 		
