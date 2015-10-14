@@ -69,7 +69,7 @@ var setupFirstRound = function() {
 var determineTurn = function() {
 		counter++;
 		if (counter > $playersArray.length) {
-			counter = 0;
+			counter = -1;
 		}
 		// $playersArray.forEach(function(event, index){
 		// 	if (event === currentTurn) counter++ 
@@ -111,47 +111,40 @@ var drawCard = function(){
 			$mainCard.removeClass(lastClass);
 			$mainCard.addClass(pickRandom);
 }
-counter = 0;
+counter = -1;
 var round1Turn = function() {
 		//
 			$('.colorButtons').click(function(evt) {
 			 	drawCard();
-			 	
 			 	determineTurn();
 			 	compareColor();
 				console.log(evt.target);
 				$colorTarget = $(evt.target);
-				//if currentTurn = $playersArray[i] .push(1);
-					//run it for each in the array
-					//currentTurn.push(1);
 					if (($colorTarget).hasClass("red") && cardColor === "red"){
 						console.log("Red was the right guess");
-						$playersArray[0].push(0);
+						currentTurn.push(0);
 					} else if (($colorTarget).hasClass("red") && cardColor === "black") {
 						console.log("Red was the wrong guess");
-						$playersArray[0].push(1);
+						currentTurn.push(1);
 					} else if (($colorTarget).hasClass("black") && cardColor === "black") {
 						console.log("black was the right guess");
-						$playersArray[0].push(1);
+						currentTurn.push(0);
 					} else if (($colorTarget).hasClass("black") && cardColor === "red") {
 						console.log("black was the wrong guess");
-						$playersArray[0].push(1);
-					} else {
-						console.log("you fucked up, bruh");
+						currentTurn.push(1);
 					}
 			 });
-		//
 }
 var compareColor = function() {
 	for (i=0; i < redCards.length; i++) {
 		if ($mainCard.hasClass(redCards[i])) {
-			console.log('card is red AF');
+			//console.log('card is red AF');
 			cardColor = "red";
 		}	
 	}
 	for (i=0; i < blackCards.length; i++) {
 		if ($mainCard.hasClass(blackCards[i])) {
-			console.log('card is black dawg');
+			//console.log('card is black dawg');
 			cardColor = "black";
 		}	
 	}
