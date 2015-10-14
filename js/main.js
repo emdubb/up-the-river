@@ -71,7 +71,9 @@ var setupFirstRound = function() {
 
 		$('#playerArea').append('<div id="playerList">');
 		for (var i = 0; i < $playersArray.length; i++) {
-			$('#playerList').append($('<h3>').append($playersArray[i]));
+			//$('#playerList').append$('<div>').addClass("player" + i);
+			$($('<div>').addClass("player" + i)).appendTo('#playerList');
+			$('.player' + i).append($playersArray[i]);
 			//($('<p class="points">Points:</p>')).insertAfter($('#playerList h3:nth-child(' + (i++) + ')'));
 			console.log($playersArray[i]);
 		}
@@ -192,7 +194,7 @@ var playRound2 = function() {
 		console.log("Start round 2");
 		drawCard();
 		determineTurn();
-		compareLowerHigher();
+		//compareLowerHigher();
 	});
 }
 
