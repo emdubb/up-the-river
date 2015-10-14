@@ -38,13 +38,17 @@ var getPlayerNames = function() {
 	//var $playersArray = [$playerName1, $playerName2, $playerName3, $playerName4, $playerName5, $playerName6];
 	console.log($playersArray);
 }
-function startGame() {
-	getPlayerNames();
+
+var getRule = function() {
 	$('.playerNameDiv, #beginGame').hide("slow");
 	$('#description').text("Make a rule or punishment for the winner of the game to follow. Be as nice or mean as you dare!");
 	$('#playerArea').append($('<input id="ruleInput"> <div id="ruleButtons">'));
 	$('#ruleButtons').append($('<button id="myRuleButton"> My Rule is Awesome </button>'));
 	//<button id="randomRule"> Randomize Me Bro</button>
+}
+function startGame() {
+	getPlayerNames();
+	getRule();
 	$('#myRuleButton').click(function() {
 		var $gameRule = $('#ruleInput').val();
 		console.log($gameRule);
