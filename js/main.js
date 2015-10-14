@@ -8,19 +8,22 @@ var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04",
 var $playersArray, $playerName1, $playerName2, $playerName3, $playerName4, $playerName5, $playerName6
 var $gameRule, $redButton, $blackButton, $lowerButton, $higherButton
 var counter = -1;
-var cardNumbers =[	["h02", "d02", "c02", "s02"],
-					["h03", "d03", "c03", "s03"],
-					["h04", "d04", "c04", "s04"],
-					["h05", "d05", "c05", "s05"],
-					["h06", "d06", "c06", "s06"],
-					["h07", "d07", "c07", "s07"],
-					["h08", "d08", "c08", "s08"],
-					["h09", "d09", "c09", "s09"],
-					["h10", "d10", "c10", "s10"],
-					["hJ", "dJ", "cJ", "sJ"],
-					["hQ", "dQ", "cQ", "sQ"],
-					["hK", "dK", "cK", "sK"],
-					["hA", "dA", "cA", "sA"]	]
+var cardNumbers = {
+	h02: 1, d02: 1, c02: 1, s02: 1,
+	h03: 2, d03: 2, c03: 2, s03: 2,
+	h04: 3, d04: 3, c04: 3, s04: 3,
+	h05: 4, d05: 4, c05: 4, s05: 4,
+	h06: 5, d06: 5, c06: 5, s06: 5,
+	h07: 6, d07: 6, c07: 6, s07: 6,
+	h08: 7, d08: 7, c08: 7, s08: 7,
+	h09: 8, d09: 8, c09: 8, s09: 8,
+	h10: 9, d10: 9, c10: 9, s10: 9,
+	hJ: 10, dJ: 10, cJ: 10, sJ: 10,
+	hQ: 11, dQ: 11, cQ: 11, sQ: 11,
+	hK: 12, dK: 12, cK: 12, sK: 12,
+	hA: 13, dA: 13, cA: 13, sA: 13
+};
+
 
 //============================GLOBAL FUNCTIONS=====================================
 var getPlayerNames = function() {
@@ -89,12 +92,6 @@ var determineTurn = function() {
 		if (counter > ($playersArray.length - 1)) {
 			counter = 0;
 		}
-		// $playersArray.forEach(function(event, index){
-		// 	if (event === currentTurn) counter++ 
-		// 	if (counter === $playersArray.length) {
-		// 		counter = 0;
-		// 	}
-		// });
 		switch (counter) {
 			case 1:
 				currentTurn = $playersArray[1];
@@ -133,7 +130,6 @@ var drawCard = function(){
 var addPlayerCard = function() {
 	//-1 is player1 at index 0
 	$($('<div class="card">').addClass(lastClass)).appendTo('.player' + counter);
-	console.log("assign card to player");
 }
 
 var playRound1 = function() {
@@ -201,23 +197,29 @@ var playRound2 = function() {
 		drawCard();
 		determineTurn();
 		addPlayerCard();
-		//compareLowerHigher();
+		compareLowerHigher();
 	});
 }
 
+
 var compareLowerHigher = function() {
-	for (i=0; i < redCards.length; i++) {
-	if ($mainCard.hasClass(redCards[i])) {
-			//console.log('card is red AF');
-			cardColor = "red";
-		}	
-	}
-	for (i=0; i < blackCards.length; i++) {
-		if ($mainCard.hasClass(blackCards[i])) {
-			//console.log('card is black dawg');
-			cardColor = "black";
-		}	
-	}
+	var $cards = $(".player" + counter + " div");
+
+	var card1 = cardNumbers[$($cards[0]).attr("class").split(" ")[1]];
+	var card2 = cardNumbers[$($cards[1]).attr("class").split(" ")[1]];
+
+	console.log($cards, card1, card2);
+//If the first div of class + i (for length of the array) has an index 
+//if counter is 0 then it is player 1's turn
+	
+
+	//console.log(($currentPlayer:nth-child(1)));
+		//.hasClass()
+		//for (i=0; i < )
+
+
+
+
 }
 
 //=========================RUN GAME========================================
