@@ -9,8 +9,8 @@ var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04",
 
 var $playersArray, $playerName1, $playerName2, $playerName3, $playerName4, $playerName5, $playerName6
 
-function startGame() {
-	$playersArray = [];
+var getPlayerNames = function() {
+		$playersArray = [];
 	$playerName1 = [$('#player-name1').val()]
 	$playerName2 = [$('#player-name2').val()]
 	$playerName3 = [$('#player-name3').val()]
@@ -37,7 +37,9 @@ function startGame() {
 	}
 	//var $playersArray = [$playerName1, $playerName2, $playerName3, $playerName4, $playerName5, $playerName6];
 	console.log($playersArray);
-
+}
+function startGame() {
+	getPlayerNames();
 	$('.playerNameDiv, #beginGame').hide("slow");
 	$('#description').text("Make a rule or punishment for the winner of the game to follow. Be as nice or mean as you dare!");
 	$('#playerArea').append($('<input id="ruleInput"> <div id="ruleButtons">'));
