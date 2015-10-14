@@ -1,7 +1,7 @@
 console.log("main.js loaded");
 //==========================GLOBAL VARIABLES=======================================
 //var playerPoints = [0, 0, 0, 0, 0, 0]
-var currentTurn, cardColor, $colorTarget, lastClass
+var currentTurn, cardColor, $colorTarget, lastClass, cardHighOrLow
 var $mainCard = $('<div id="deckDefault" class="card xlarge back">')
 var redCards = ["dA","dK","dQ","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hK","hQ","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sK","sQ","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
@@ -193,11 +193,37 @@ var setupSecondRound = function() {
 
 var playRound2 = function() {
 	$('.higherLowerButtons').click(function(evt){
-		console.log("Start round 2");
+		// console.log("Start round 2");
 		drawCard();
 		determineTurn();
 		addPlayerCard();
 		compareLowerHigher();
+
+		higherLowerTarget = $(evt.target);
+
+		if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "low"){
+					console.log("Lower was the right guess");
+					//currentTurn[1] = 0;
+				} else if (($colorTarget).hasClass("lower") && cardHighOrLow === "high") {
+					console.log("Lower was the wrong guess");
+					currentTurn[1] = +1;
+				} else if (($colorTarget).hasClass("lower") && cardHighOrLow === "even") {
+					console.log("Its a tie (lguess)");
+					currentTurn[1] = +2; 
+				} else if (($colorTarget).hasClass("higher") && cardHighOrLow === "high") {
+					console.log("Higher was the right guess");
+					//currentTurn[1] = 0;
+				} else if (($colorTarget).hasClass("higher") && cardHighOrLow === "low") {
+					console.log("Higher was the wrong guess");
+					currentTurn[1] = +1;
+				} else if (($colorTarget).hasClass("higher") && cardHighOrLow === "even") {
+					console.log("Its a tie (hguess)");
+					currentTurn[1] = +2;
+				}
+				//move to next round
+				//if (counter > ($playersArray.length -2)) {
+				//setupThirdRound();
+				//playRound3();
 	});
 }
 
@@ -209,17 +235,14 @@ var compareLowerHigher = function() {
 	var card2 = cardNumbers[$($cards[1]).attr("class").split(" ")[1]];
 
 	console.log($cards, card1, card2);
-//If the first div of class + i (for length of the array) has an index 
-//if counter is 0 then it is player 1's turn
-	
 
-	//console.log(($currentPlayer:nth-child(1)));
-		//.hasClass()
-		//for (i=0; i < )
-
-
-
-
+	if (card1 > card2) {
+		cardHighOrLow = "low";
+	} else if (card1 < card2) {
+		cardHighOrLow ="high";
+	} else {
+		cardHighOrLow="even";
+	}
 }
 
 //=========================RUN GAME========================================
