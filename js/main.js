@@ -69,9 +69,9 @@ var setupFirstRound = function() {
 
 var determineTurn = function() {
 		counter++;
+		//reset round of turns
 		if (counter > ($playersArray.length - 1)) {
 			counter = -1;
-			$('#playerArea').append('<button class="nextRound">We wanna drink more!</button>');
 		}
 		// $playersArray.forEach(function(event, index){
 		// 	if (event === currentTurn) counter++ 
@@ -137,7 +137,11 @@ var playRound1 = function() {
 					console.log("black was the wrong guess");
 					currentTurn.push(1);
 				}
-				
+				//move to next round
+				if (counter > ($playersArray.length -2)) {
+				setupSecondRound();
+				//$('#playerArea').append('<button class="nextRound">We wanna drink more!</button>');
+				}
 			 });
 }
 
@@ -158,7 +162,7 @@ var compareColor = function() {
 }
 
 var setupSecondRound = function() {
-	
+	$('.colorButtons').hide("slow");
 }
 
 //=========================RUN GAME========================================
@@ -169,8 +173,8 @@ function startGame() {
 	 	setupMainCard();
 	 	setupFirstRound();
 	 	playRound1();
-
 	});
+	setupSecondRound();
 }
 
 
