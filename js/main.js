@@ -53,6 +53,7 @@ var setupFirstRound = function() {
 
 		$('#ruleInput, #ruleButtons').hide("slow");
 		$('#description').text("Will your card be red or black? Select a color to choose");
+		$('.pageTitle').text("Up the River | Round 1");
 
 		$('#playerArea').append('<div id="playerList">');
 		for (var i = 0; i < $playersArray.length; i++) {
@@ -167,6 +168,14 @@ var setupSecondRound = function() {
 	$higherButton = $('<div class="higher">+</div>').addClass("higherLowerButtons");
 	$('#cardArea').append($lowerButton);
 	$('#cardArea').append($higherButton);
+	$('.pageTitle').text("Up the River | Round 2");
+	$('#description').text("Will your card be higher or lower? Select a button to choose");
+}
+
+var playRound2 = function() {
+	$('.higherLowerButtons').click(function(){
+		console.log("Start round 2 mofo");
+	});
 }
 
 //=========================RUN GAME========================================
@@ -178,7 +187,7 @@ function startGame() {
 	 	setupFirstRound();
 	 	playRound1();
 	});
-	setupSecondRound();
+	playRound2();
 }
 
 

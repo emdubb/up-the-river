@@ -22,8 +22,14 @@
 .red {
 	background-color: red;
 }
+.red:hover {
+	background-color: Crimson;
+}
 .black {
 	background-color: black;
+}
+.black:hover {
+	background-color: DimGray;
 }
 .black, .red, .higher, .lower {
 	width: 3em;
@@ -33,9 +39,11 @@
 .higherLowerButtons {
 	background-color: black;
 	color: white;
+	text-align: center;
+	padding-top: .2em;
 }
 .higherLowerButtons:hover {
-	background-color: grey;
+	background-color: DimGray;
 }
 #cardArea {
 	display: inline;

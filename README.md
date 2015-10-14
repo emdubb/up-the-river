@@ -37,6 +37,7 @@ The current [wirefame][wireframelink] is desktop only
 - [x] As a player, if I lost then I want to receive a point. If I won then I do not want to recieve a point.
 - [ ] As a group of players, after all four rounds are complete I want to see the cards on the river. If my cards match any of the cards in the left column I want to take drinks, if my cards match any of the cards in the right column I want to assign drinks to other players.
 - [ ] As a group of players, I want to see the top card and if I have a card with the same value I will follow the rule or punishment.
+- [ ] As a group of players, I don't want to be able to start the game until I have provided the proper input.
 
 ### Icebox
 - [x] As a group of players, I want to be able to input each player upon starting a new game so that I can see names and cards for each person because drinking nicknames are fantastic.
