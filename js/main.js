@@ -203,25 +203,19 @@ var playRound2 = function() {
 
 		if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "low"){
 					$('#message' + counter).append("You were right, now make someone pay.");
-					console.log("Lower was the right guess");
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "high") {
 					$('#message' + counter).append("You were wrong. Drink up bruh.");
-					console.log("Lower was the wrong guess");
 					currentTurn[1] += 2;
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "even") {
 					$('#message' + counter).append("Sucks to suck. Drink double.");
-					console.log("Its a tie (lguess)");
 					currentTurn[1] += 3; 
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "high") {
 					$('#message' + counter).append("You were right, now make someone pay.");
-					console.log("Higher was the right guess");
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "low") {
 					$('#message' + counter).append("You were wrong. Drink up bruh.");
-					console.log("Higher was the wrong guess");
 					currentTurn[1] += 2;
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "even") {
 					$('#message' + counter).append("Sucks to suck. Drink double.");
-					console.log("Its a tie (hguess)");
 					currentTurn[1] += 3;
 				}
 				updatePoints();
@@ -267,12 +261,22 @@ var playRound3 = function() {
 		tweenerTarget = $(evt.target);
 
 		if ((tweenerTarget).hasClass("inBetween") && cardTweener === "inBetween"){
+					$('#message' + counter).append("You were right, now make someone pay.");
 					console.log("in between was the right guess");
 				} else if ((tweenerTarget).hasClass("outside") && cardTweener === "outside") {
+					$('#message' + counter).append("You were right, now make someone pay.");
 					console.log("Outside was the right guess");
 				} else if ((tweenerTarget).hasClass("onTheFence") && cardTweener === "onTheFence") {
+					$('#message' + counter).append("You were right, now make someone pay.");
 					console.log("On the fence was the right guess");
+				} else if ((tweenerTarget).hasClass("inBetween") && cardTweener === "onTheFence") {
+					$('#message' + counter).append("Sucks to suck. Drink double.");
+					currentTurn[1] += 6;
+				} else if ((tweenerTarget).hasClass("outside") && cardTweener === "onTheFence") {
+					$('#message' + counter).append("Sucks to suck. Drink double.");
+					currentTurn[1] += 6;
 				} else {
+					$('#message' + counter).append("You were wrong. Drink up bruh.");
 					console.log("Wrong guess!");
 					currentTurn[1] += 3; 
 				}
