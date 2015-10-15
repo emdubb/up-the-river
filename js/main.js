@@ -3,13 +3,14 @@ console.log("main.js loaded");
 //var playerPoints = [0, 0, 0, 0, 0, 0]
 var currentTurn, cardColor, $colorTarget, lastClass, giveDrinksTarget,
 	cardHighOrLow, inBetween, outside, onTheFence, cardTweener,
-	heartsButton, spadesButton, diamondsButton, clubsButton, card4suit, numberDrinks
+	heartsButton, spadesButton, diamondsButton, clubsButton, card4suit
 var $mainCard = $('<div id="deckDefault" class="card xlarge back">')
 var redCards = ["dA","dK","dQ","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hK","hQ","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sK","sQ","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 var $playersArray, $playerName1, $playerName2, $playerName3, $playerName4, $playerName5, $playerName6
 var $gameRule, $redButton, $blackButton, $lowerButton, $higherButton
 var counter = -1;
+var numberDrinks = 0;
 var cardNumbers = {
 	h02: 1, d02: 1, c02: 1, s02: 1,
 	h03: 2, d03: 2, c03: 2, s03: 2,
@@ -69,25 +70,20 @@ var giveDrinks = function(number) {
 	$('.userInputButtons').hide("slow");
 	$('.pointAdder').addClass("pointAdderVisible");
 	$('.pointAdder').show();
-		$('.pointAdder').unbind().click(function(evt) {
-			$giveDrinksTarget = $(evt.target);
-			var iClass = $giveDrinksTarget.parent().attr('class')[6];
-			if (($giveDrinksTarget).hasClass("addPointsButton" + iClass)){
-				$playersArray[iClass][1] += 1;
-				$('#points' + iClass).text("Drinks: " + $playersArray[iClass][1]);	
-			} 
+	$('.pointAdder').unbind().click(function(evt) {
+		numberDrinks++
+		$giveDrinksTarget = $(evt.target);
+		var iClass = $giveDrinksTarget.parent().attr('class')[6];
+		if (($giveDrinksTarget).hasClass("addPointsButton" + iClass)){
+			$playersArray[iClass][1] += 1;
+			$('#points' + iClass).text("Drinks: " + $playersArray[iClass][1]);	
+		} 
+		if (number === numberDrinks) {
 			$('.pointAdder').hide("slow");
-			if (number === 2) {
-					console.log("its running again");
-					$('.pointAdder').show("slow");
-					number++
-					//giveDrinks();
-			}
-			
-			
 			$('.userInputButtons').show("slow");
-			
-		});
+			numberDrinks = 0;
+		}
+	});
 }
 
 var setupFirstRound = function() {
@@ -245,6 +241,8 @@ var playRound2 = function() {
 					$('#message' + counter).append("You were right, now dish out 2 drinks.");
 					currentTurn[1] += 0;
 					giveDrinks(2);
+					
+
 	
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "high") {
 					$('#message' + counter).append("You were wrong. Drink up x2 bruh.");
@@ -258,6 +256,7 @@ var playRound2 = function() {
 					$('#message' + counter).append("You were right, now dish out 2 drinks.");
 					currentTurn[1] += 0;
 					giveDrinks(2);
+					
 
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "low") {
 					$('#message' + counter).append("You were wrong. Drink up x2 bruh.");
@@ -300,12 +299,15 @@ var playRound3 = function() {
 		if ((tweenerTarget).hasClass("inBetween") && cardTweener === "inBetween"){
 					$('#message' + counter).append("You were right, now dish out 3 drinks.");
 					console.log("in between was the right guess");
+					giveDrinks(3);
 				} else if ((tweenerTarget).hasClass("outside") && cardTweener === "outside") {
 					$('#message' + counter).append("You were right, now dish out 3 drinks.");
 					console.log("Outside was the right guess");
+					giveDrinks(3);
 				} else if ((tweenerTarget).hasClass("onTheFence") && cardTweener === "onTheFence") {
 					$('#message' + counter).append("You were right you handsome devil, now dish out double(6).");
 					console.log("On the fence was the right guess");
+					giveDrinks(3);
 				} else if ((tweenerTarget).hasClass("inBetween") && cardTweener === "onTheFence") {
 					$('#message' + counter).append("Sucks to suck. Drink double(x6).");
 					currentTurn[1] += 6;
@@ -372,12 +374,16 @@ var playRound4 = function() {
 
 		if ((suitsTarget).hasClass("hearts") && card4suit === "h"){
 					$('#message' + counter).append("You were right, now dish out 4 drinks.");
+					giveDrinks(4);
 				} else if ((suitsTarget).hasClass("clubs") && card4suit === "c") {
 					$('#message' + counter).append("You were right, now dish out 4 drinks.");
+					giveDrinks(4);
 				} else if ((suitsTarget).hasClass("diamonds") && card4suit === "d") {
 					$('#message' + counter).append("You were right, now dish out 4 drinks.");
+					giveDrinks(4);
 				} else if ((suitsTarget).hasClass("spades") && card4suit === "s") {
 					$('#message' + counter).append("You were right, now dish out 4 drinks.");
+					giveDrinks(4);
 				} else {
 					$('#message' + counter).append("You were wrong. Drink up x4 bruh.");
 					currentTurn[1] += 4; 
