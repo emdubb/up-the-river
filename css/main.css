@@ -31,18 +31,18 @@
 .black:hover {
 	background-color: DimGray;
 }
-.black, .red, .higher, .lower {
+.black, .red, .higher, .lower, .tweener{
 	width: 3em;
 	height: 3em;
 	border-radius: 1.5em;
 }
-.higherLowerButtons {
+.higherLowerButtons, .tweener {
 	background-color: black;
 	color: white;
 	text-align: center;
 	padding-top: .2em;
 }
-.higherLowerButtons:hover {
+.higherLowerButtons:hover, .tweener:hover {
 	background-color: DimGray;
 }
 #cardArea {
