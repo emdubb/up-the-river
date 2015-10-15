@@ -71,7 +71,7 @@ var getRule = function() {
 
 var giveDrinks = function(number) {
 	$('.userInputButtons').fadeOut();
-	$('.pointAdder').addClass("pointAdderVisible");
+	$('.pointAdder').fadeIn();
 	$('.pointAdder').fadeIn();
 	$('.pointAdder').unbind().click(function(evt) {
 		numberDrinks++
@@ -104,8 +104,8 @@ var setupFirstRound = function() {
 			$($('<h3>').text($playersArray[i][0])).appendTo('.player' + i);
 			$($('<p>').attr('id', 'message' + i)).appendTo('.player' + i).css({marginTop: ".3em" });
 			$($('<p>').attr('id', 'points' + i)).appendTo('.player' + i).css({clear: "both" });
-			$($('<div class="pointAdder">+</div>').addClass("addPointsButton" + i)).prependTo('.player' + i);
-			$($('<div>').addClass("playerCards" + i)).appendTo('.player' + i).css({clear: "both"});
+			$($('<div class="pointAdder">+</div>').addClass("addPointsButton" + i)).prependTo('.player' + i).hide();
+			$($('<div>').addClass("playerCards" + i)).appendTo('.player' + i).css({clear: "both", marginBottom: "8em"});
 			console.log($playersArray[i]);
 		}
 		$redButton = $('<div class="red">').addClass("colorButtons");
