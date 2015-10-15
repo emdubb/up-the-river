@@ -1,7 +1,7 @@
 console.log("main.js loaded");
 //==========================GLOBAL VARIABLES=======================================
 //var playerPoints = [0, 0, 0, 0, 0, 0]
-var currentTurn, cardColor, $colorTarget, lastClass, 
+var currentTurn, cardColor, $colorTarget, lastClass, giveDrinksTarget,
 	cardHighOrLow, inBetween, outside, onTheFence, cardTweener,
 	heartsButton, spadesButton, diamondsButton, clubsButton, card4suit
 var $mainCard = $('<div id="deckDefault" class="card xlarge back">')
@@ -63,6 +63,23 @@ var getRule = function() {
 	$('#playerArea').append($('<input id="ruleInput"> <div id="ruleButtons">'));
 	$('#ruleButtons').append($('<button id="myRuleButton"> My Rule is Awesome </button>'));
 	//<button id="randomRule"> Randomize Me Bro</button>
+}
+
+var giveDrinks = function() {
+	$('.pointAdder').click(function(evt) {
+		giveDrinksTarget = $(evt.target);
+
+		if ((giveDrinksTarget).hasClass("addPoints0")){
+			$playersArray[0][1] ++1;
+			console.log("add point to player 1", $playersArray[0]);
+		} 
+		// else if (($colorTarget).hasClass("red") && cardColor === "black") {
+		// 			$('#message' + counter).append("You were wrong. Drink up bruh.");
+		// 			console.log("Red was the wrong guess");
+		// 			currentTurn[1] = 1;
+		// 		}
+
+	});
 }
 
 var setupFirstRound = function() {
