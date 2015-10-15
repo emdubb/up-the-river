@@ -232,7 +232,22 @@ var playRound2 = function() {
 				}
 	});
 }
+var compareLowerHigher = function() {
+	var $cards = $(".player" + counter + " div");
 
+	var card1 = cardNumbers[$($cards[0]).attr("class").split(" ")[1]];
+	var card2 = cardNumbers[$($cards[1]).attr("class").split(" ")[1]];
+
+	//console.log($cards, card1, card2);
+
+	if (card1 > card2) {
+		cardHighOrLow = "low";
+	} else if (card1 < card2) {
+		cardHighOrLow ="high";
+	} else {
+		cardHighOrLow="even";
+	}
+}
 var setupThirdRound = function() {
 	$('.higherLowerButtons').hide("slow");
 	inBetween = $('<div class="inBetween">><</div>').addClass("tweener");
@@ -246,33 +261,36 @@ var setupThirdRound = function() {
 }
 
 var playRound3 = function() {
-	drawCard();
-	determineTurn();
-	addPlayerCard();
+	$('.tweener').click(function(evt){
+		drawCard();
+		determineTurn();
+		addPlayerCard();
+		compareTweener();
 
-	updatePoints();
-	//move to next round
-	if (counter > ($playersArray.length -2)) {
-	// setupFourthRound();
-	// playRound4();
-	}
+		updatePoints();
+		//move to next round
+		if (counter > ($playersArray.length -2)) {
+		// setupFourthRound();
+		// playRound4();
+		}
+	});
 }
 
-var compareLowerHigher = function() {
-	console.log("compareLowerHigher is running");
+var compareTweener = function() {
 	var $cards = $(".player" + counter + " div");
 
 	var card1 = cardNumbers[$($cards[0]).attr("class").split(" ")[1]];
 	var card2 = cardNumbers[$($cards[1]).attr("class").split(" ")[1]];
+	var card3 = cardNumbers[$($cards[2]).attr("class").split(" ")[1]];
 
-	console.log($cards, card1, card2);
+	console.log(card1, card2, card3);
 
-	if (card1 > card2) {
-		cardHighOrLow = "low";
-	} else if (card1 < card2) {
-		cardHighOrLow ="high";
+	if ((card3 > card2 && card3 > card1) || (card3 < card2 && card3 < card1)) {
+		console.log("card is outside");
+	} else if (card3 === card2 || card3 === card1){
+		console.log("card is on the fence");
 	} else {
-		cardHighOrLow="even";
+		console.log("card is inbetween");
 	}
 }
 
