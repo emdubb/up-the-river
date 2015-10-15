@@ -70,9 +70,9 @@ var getRule = function() {
 }
 
 var giveDrinks = function(number) {
-	$('.userInputButtons').hide("slow");
+	$('.userInputButtons').fadeOut();
 	$('.pointAdder').addClass("pointAdderVisible");
-	$('.pointAdder').show();
+	$('.pointAdder').fadeIn();
 	$('.pointAdder').unbind().click(function(evt) {
 		numberDrinks++
 		$giveDrinksTarget = $(evt.target);
@@ -82,8 +82,8 @@ var giveDrinks = function(number) {
 			$('#points' + iClass).text("Drinks: " + $playersArray[iClass][1]);	
 		} 
 		if (number === numberDrinks) {
-			$('.pointAdder').hide("slow");
-			$('.userInputButtons').show("slow");
+			$('.pointAdder').fadeOut();
+			$('.userInputButtons').fadeIn();
 			numberDrinks = 0;
 		}
 	});
