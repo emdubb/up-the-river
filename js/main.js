@@ -67,19 +67,14 @@ var getRule = function() {
 
 var giveDrinks = function() {
 	$('.pointAdder').addClass("pointAdderVisible");
-	$('.pointAdder').click(function(evt) {
+	$('.pointAdder').unbind().click(function(evt) {
 		$giveDrinksTarget = $(evt.target);
-		var i = $giveDrinksTarget.parent().attr('class')[6];
-		console.log(i, $playerName1, $playerName2, $playerName3, $playerName4, $playerName5, $playerName6);
-			
-			if (($giveDrinksTarget).hasClass("addPointsButton" + i)){
-				$playersArray[i][1] += 1;
-				console.log("add point to player ", i, $playerName1, $playerName2, $playerName3, $playerName4, $playerName5, $playerName6);
-				$('#points' + i).text("Drinks: " + $playersArray[i][1]);
-				$('.pointAdder').removeClass('pointAdderVisible');
-			} 
-		
-
+		var iClass = $giveDrinksTarget.parent().attr('class')[6];
+		if (($giveDrinksTarget).hasClass("addPointsButton" + iClass)){
+			$playersArray[iClass][1] += 1;
+			$('#points' + iClass).text("Drinks: " + $playersArray[iClass][1]);
+			$('.pointAdder').removeClass('pointAdderVisible');
+		} 
 	});
 }
 
@@ -165,14 +160,14 @@ var playRound1 = function() {
 				if (($colorTarget).hasClass("red") && cardColor === "red"){
 					$('#message' + counter).append("You were right, now make someone pay.");
 					currentTurn[1] += 0;
-					giveDrinks();
+					// giveDrinks();
 				} else if (($colorTarget).hasClass("red") && cardColor === "black") {
 					$('#message' + counter).append("You were wrong. Drink up bruh.");
 					currentTurn[1] += 1;
 				} else if (($colorTarget).hasClass("black") && cardColor === "black") {
 					$('#message' + counter).append("You were right, now make someone pay.");
 					currentTurn[1] += 0;
-					giveDrinks();
+					// giveDrinks();
 				} else if (($colorTarget).hasClass("black") && cardColor === "red") {
 					$('#message' + counter).append("You were wrong. Drink up bruh.");
 					currentTurn[1] += 1;
