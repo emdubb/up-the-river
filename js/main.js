@@ -143,9 +143,12 @@ var determineTurn = function() {
 				break;
 		}
 }
-
-var setupMainCard = function() {
+var setupPlayerTurn = function() {
 	$('#playerArea').append('<div id="cardArea">');
+	$('#cardArea').append('<h2 class="currentPlayer">');
+	$('.currentPlayer').text("It's " + $playersArray[0][0] + "'s Turn");
+}
+var setupMainCard = function() {
 	$('#cardArea').append('<div class="userInputButtons">')
 	$('#cardArea').append($mainCard);
 }
@@ -209,7 +212,7 @@ var compareColor = function() {
 }
 
 var setupSecondRound = function() {
-	$('.colorButtons').hide("slow");
+	$('.colorButtons').hide();
 	$lowerButton = $('<div class="lower">-</div>').addClass("higherLowerButtons");
 	$higherButton = $('<div class="higher">+</div>').addClass("higherLowerButtons");
 	$('.userInputButtons').append($lowerButton);
@@ -280,7 +283,7 @@ var playRound2 = function() {
 }
 
 var setupThirdRound = function() {
-	$('.higherLowerButtons').hide("slow");
+	$('.higherLowerButtons').hide();
 	inBetween = $('<div class="inBetween">><</div>').addClass("tweener");
 	outside = $('<div class="outside"><></div>').addClass("tweener");
 	onTheFence = $('<div class="onTheFence">||</div>').addClass("tweener");
@@ -353,7 +356,7 @@ var compareTweener = function() {
 }
 
 var setupFourthRound = function() {
-	$('.tweener').hide("slow");
+	$('.tweener').hide();
 	heartsButton = $('<div class="hearts">H</div>').addClass("suitsButtons");
 	clubsButton = $('<div class="clubs">C</div>').addClass("suitsButtons");
 	spadesButton = $('<div class="spades">S</div>').addClass("suitsButtons");
@@ -412,6 +415,7 @@ function startGame() {
 	getPlayerNames();
 	getRule();
 	$('#myRuleButton').click(function() {
+	 	setupPlayerTurn();
 	 	setupMainCard();
 	 	setupFirstRound();
 	 	playRound1();

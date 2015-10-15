@@ -13,6 +13,7 @@ h1 {
 	margin-bottom: 0;
     margin-top: .25em;
 }
+
 h3 {
 	text-align: left;
 }
@@ -107,6 +108,8 @@ input[type=text]:focus {
 .suitsButtons {
 	color: white;
 	text-align: center;
+	display: inline-block;
+	margin: .5em .75em;
 }
 .higherLowerButtons, .tweener {
 	background-color: black;
@@ -115,9 +118,11 @@ input[type=text]:focus {
 	padding-top: .2em;
 	display: inline-block;
     margin: .5em .75em;
+    background-color: #96c590;
+	color: white;
 }
 .higherLowerButtons:hover, .tweener:hover {
-	background-color: DimGray;
+	background-color: #3d5970;
 
 }
 #cardArea {
@@ -146,16 +151,12 @@ button:hover {
     height: 28px;
     border-radius: 1em;
     margin-right: .25em;
-
     background-color: #96c590;
 	color: white;
 	text-align: center;
 	font-weight: 300;
 	font-size: 42px;
 	line-height: .4;
-}
-.pointAdderVisible {
-	
 }
 .pointAdder:hover {
 	background-color: #3d5970;
