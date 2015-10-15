@@ -3,7 +3,7 @@ console.log("main.js loaded");
 //var playerPoints = [0, 0, 0, 0, 0, 0]
 var currentTurn, cardColor, $colorTarget, lastClass, giveDrinksTarget,
 	cardHighOrLow, inBetween, outside, onTheFence, cardTweener,
-	heartsButton, spadesButton, diamondsButton, clubsButton, card4suit
+	heartsButton, spadesButton, diamondsButton, clubsButton, card4suit, numberDrinks
 var $mainCard = $('<div id="deckDefault" class="card xlarge back">')
 var redCards = ["dA","dK","dQ","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hK","hQ","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sK","sQ","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
@@ -65,19 +65,28 @@ var getRule = function() {
 	//<button id="randomRule"> Randomize Me Bro</button>
 }
 
-var giveDrinks = function() {
-	$('.pointAdder').addClass("pointAdderVisible");
+var giveDrinks = function(number) {
 	$('.userInputButtons').hide("slow");
-	$('.pointAdder').unbind().click(function(evt) {
-		$giveDrinksTarget = $(evt.target);
-		var iClass = $giveDrinksTarget.parent().attr('class')[6];
-		if (($giveDrinksTarget).hasClass("addPointsButton" + iClass)){
-			$playersArray[iClass][1] += 1;
-			$('#points' + iClass).text("Drinks: " + $playersArray[iClass][1]);
-			$('.pointAdder').removeClass('pointAdderVisible');
+	$('.pointAdder').addClass("pointAdderVisible");
+	$('.pointAdder').show();
+		$('.pointAdder').unbind().click(function(evt) {
+			$giveDrinksTarget = $(evt.target);
+			var iClass = $giveDrinksTarget.parent().attr('class')[6];
+			if (($giveDrinksTarget).hasClass("addPointsButton" + iClass)){
+				$playersArray[iClass][1] += 1;
+				$('#points' + iClass).text("Drinks: " + $playersArray[iClass][1]);
+				
+			} 
+			
+			$('.pointAdder').hide("slow");
 			$('.userInputButtons').show("slow");
-		} 
-	});
+			if (number === 2) {
+				console.log("its running again");
+				$('.pointAdder').show();
+				number++
+				//giveDrinks();
+			}
+		});
 }
 
 var setupFirstRound = function() {
@@ -162,16 +171,16 @@ var playRound1 = function() {
 				$colorTarget = $(evt.target);
 
 				if (($colorTarget).hasClass("red") && cardColor === "red"){
-					$('#message' + counter).append("You were right, now make someone pay.");
+					$('#message' + counter).append("You were right, now dish out a drink.");
 					currentTurn[1] += 0;
-					giveDrinks();
+					giveDrinks(1);
 				} else if (($colorTarget).hasClass("red") && cardColor === "black") {
 					$('#message' + counter).append("You were wrong. Drink up bruh.");
 					currentTurn[1] += 1;
 				} else if (($colorTarget).hasClass("black") && cardColor === "black") {
-					$('#message' + counter).append("You were right, now make someone pay.");
+					$('#message' + counter).append("You were right, now dish out a drink.");
 					currentTurn[1] += 0;
-					giveDrinks();
+					giveDrinks(1);
 				} else if (($colorTarget).hasClass("black") && cardColor === "red") {
 					$('#message' + counter).append("You were wrong. Drink up bruh.");
 					currentTurn[1] += 1;
@@ -234,27 +243,29 @@ var playRound2 = function() {
 		if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "low"){
 					$('#message' + counter).append("You were right, now dish out 2 drinks.");
 					currentTurn[1] += 0;
-					console.log("wtf 1");
+					giveDrinks(2);
+	
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "high") {
 					$('#message' + counter).append("You were wrong. Drink up x2 bruh.");
 					currentTurn[1] += 2;
-					console.log("wtf 2");
+
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "even") {
 					$('#message' + counter).append("Sucks to suck. Drink double(x4).");
 					currentTurn[1] += 4; 
-					console.log("wtf 3");
+					
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "high") {
 					$('#message' + counter).append("You were right, now dish out 2 drinks.");
 					currentTurn[1] += 0;
-					console.log("wtf 4");
+					giveDrinks(2);
+
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "low") {
 					$('#message' + counter).append("You were wrong. Drink up x2 bruh.");
 					currentTurn[1] += 2;
-					console.log("wtf 5");
+					
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "even") {
 					$('#message' + counter).append("Sucks to suck. Drink double(x4).");
 					currentTurn[1] += 4;
-					console.log("wtf 6");
+					
 				}
 				updatePoints();
 				//move to next round
