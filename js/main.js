@@ -74,18 +74,19 @@ var giveDrinks = function(number) {
 			var iClass = $giveDrinksTarget.parent().attr('class')[6];
 			if (($giveDrinksTarget).hasClass("addPointsButton" + iClass)){
 				$playersArray[iClass][1] += 1;
-				$('#points' + iClass).text("Drinks: " + $playersArray[iClass][1]);
-				
+				$('#points' + iClass).text("Drinks: " + $playersArray[iClass][1]);	
 			} 
-			
 			$('.pointAdder').hide("slow");
-			$('.userInputButtons').show("slow");
 			if (number === 2) {
-				console.log("its running again");
-				$('.pointAdder').show();
-				number++
-				//giveDrinks();
+					console.log("its running again");
+					$('.pointAdder').show("slow");
+					number++
+					//giveDrinks();
 			}
+			
+			
+			$('.userInputButtons').show("slow");
+			
 		});
 }
 
