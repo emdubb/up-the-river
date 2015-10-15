@@ -2,8 +2,8 @@ console.log("main.js loaded");
 //==========================GLOBAL VARIABLES=======================================
 //var playerPoints = [0, 0, 0, 0, 0, 0]
 var currentTurn, cardColor, $colorTarget, lastClass, 
-	cardHighOrLow, inBetween, outside, onTheFence,
-	cardTweener
+	cardHighOrLow, inBetween, outside, onTheFence, cardTweener,
+	heartsButton, spadesButton, diamondsButton, clubsButton
 var $mainCard = $('<div id="deckDefault" class="card xlarge back">')
 var redCards = ["dA","dK","dQ","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hK","hQ","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sK","sQ","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
@@ -282,8 +282,8 @@ var playRound3 = function() {
 		updatePoints();
 		//move to next round
 		if (counter > ($playersArray.length -2)) {
-		// setupFourthRound();
-		// playRound4();
+		setupFourthRound();
+		playRound4();
 		}
 	});
 }
@@ -307,6 +307,24 @@ var compareTweener = function() {
 		console.log("card is inbetween");
 		cardTweener = "inBetween";
 	}
+}
+
+var setupFourthRound = function() {
+	$('.tweener').hide("slow");
+	heartsButton = $('<div class="hearts">H</div>').addClass("suitsButtons");
+	clubsButton = $('<div class="clubs">C</div>').addClass("suitsButtons");
+	spadesButton = $('<div class="spades">S</div>').addClass("suitsButtons");
+	diamondsButton = $('<div class="diamonds">D</div>').addClass("suitsButtons");
+	$('#cardArea').append(heartsButton);
+	$('#cardArea').append(clubsButton);
+	$('#cardArea').append(spadesButton);
+	$('#cardArea').append(diamondsButton);
+	$('.pageTitle').text("Up the River | Round 4");
+	$('#description').text("What suit will your card be? Select a button to choose");
+}
+
+var playRound4 = function() {
+	console.log("play round 4");
 }
 
 //=========================RUN GAME========================================
