@@ -202,20 +202,20 @@ var playRound2 = function() {
 		higherLowerTarget = $(evt.target);
 
 		if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "low"){
-					$('#message' + counter).append("You were right, now make someone pay.");
+					$('#message' + counter).append("You were right, now dish out 2 drinks.");
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "high") {
-					$('#message' + counter).append("You were wrong. Drink up bruh.");
+					$('#message' + counter).append("You were wrong. Drink up x2 bruh.");
 					currentTurn[1] += 2;
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "even") {
-					$('#message' + counter).append("Sucks to suck. Drink double.");
+					$('#message' + counter).append("Sucks to suck. Drink double(x4).");
 					currentTurn[1] += 3; 
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "high") {
-					$('#message' + counter).append("You were right, now make someone pay.");
+					$('#message' + counter).append("You were right, now dish out 2 drinks.");
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "low") {
-					$('#message' + counter).append("You were wrong. Drink up bruh.");
+					$('#message' + counter).append("You were wrong. Drink up x2 bruh.");
 					currentTurn[1] += 2;
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "even") {
-					$('#message' + counter).append("Sucks to suck. Drink double.");
+					$('#message' + counter).append("Sucks to suck. Drink double(x4).");
 					currentTurn[1] += 3;
 				}
 				updatePoints();
@@ -261,22 +261,22 @@ var playRound3 = function() {
 		tweenerTarget = $(evt.target);
 
 		if ((tweenerTarget).hasClass("inBetween") && cardTweener === "inBetween"){
-					$('#message' + counter).append("You were right, now make someone pay.");
+					$('#message' + counter).append("You were right, now dish out 3 drinks.");
 					console.log("in between was the right guess");
 				} else if ((tweenerTarget).hasClass("outside") && cardTweener === "outside") {
-					$('#message' + counter).append("You were right, now make someone pay.");
+					$('#message' + counter).append("You were right, now dish out 3 drinks.");
 					console.log("Outside was the right guess");
 				} else if ((tweenerTarget).hasClass("onTheFence") && cardTweener === "onTheFence") {
-					$('#message' + counter).append("You were right, now make someone pay.");
+					$('#message' + counter).append("You were right you handsome devil, now dish out double(6).");
 					console.log("On the fence was the right guess");
 				} else if ((tweenerTarget).hasClass("inBetween") && cardTweener === "onTheFence") {
-					$('#message' + counter).append("Sucks to suck. Drink double.");
+					$('#message' + counter).append("Sucks to suck. Drink double(x6).");
 					currentTurn[1] += 6;
 				} else if ((tweenerTarget).hasClass("outside") && cardTweener === "onTheFence") {
-					$('#message' + counter).append("Sucks to suck. Drink double.");
+					$('#message' + counter).append("Sucks to suck. Drink double(x6).");
 					currentTurn[1] += 6;
 				} else {
-					$('#message' + counter).append("You were wrong. Drink up bruh.");
+					$('#message' + counter).append("You were wrong. Drink up x3 bruh.");
 					console.log("Wrong guess!");
 					currentTurn[1] += 3; 
 				}
@@ -334,15 +334,15 @@ var playRound4 = function() {
 		suitsTarget = $(evt.target);
 
 		if ((suitsTarget).hasClass("hearts") && card4suit === "h"){
-					console.log("hearts was the right guess");
+					$('#message' + counter).append("You were right, now dish out 4 drinks.");
 				} else if ((suitsTarget).hasClass("clubs") && card4suit === "c") {
-					console.log("clubs was the right guess");
+					$('#message' + counter).append("You were right, now dish out 4 drinks.");
 				} else if ((suitsTarget).hasClass("diamonds") && card4suit === "d") {
-					console.log("diamonds was the right guess");
+					$('#message' + counter).append("You were right, now dish out 4 drinks.");
 				} else if ((suitsTarget).hasClass("spades") && card4suit === "s") {
-					console.log("spades was the right guess");
+					$('#message' + counter).append("You were right, now dish out 4 drinks.");
 				} else {
-					console.log("Wrong guess!");
+					$('#message' + counter).append("You were wrong. Drink up x4 bruh.");
 					currentTurn[1] += 4; 
 				}
 
@@ -359,7 +359,6 @@ var playRound4 = function() {
 var getSuit = function() {
 	var $cards = $(".player" + counter + " div");
 	card4suit = $($cards[3]).attr("class").split(" ")[1][0];
-	console.log($cards, card4suit);
 }
 
 //=========================RUN GAME========================================
