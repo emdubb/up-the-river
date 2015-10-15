@@ -93,7 +93,7 @@ var setupFirstRound = function() {
 
 		$('#ruleInput, #ruleButtons').hide("slow");
 		$('#description').text("Will your card be red or black? Select a color to choose");
-		$('.pageTitle').text("Up the River | Round 1");
+		$('.pageTitle').text("Round 1");
 
 		$('#playerArea').append('<div id="playerList">');
 		for (var i = 0; i < $playersArray.length; i++) {
@@ -211,7 +211,7 @@ var setupSecondRound = function() {
 	$higherButton = $('<div class="higher">+</div>').addClass("higherLowerButtons");
 	$('.userInputButtons').append($lowerButton);
 	$('.userInputButtons').append($higherButton);
-	$('.pageTitle').text("Up the River | Round 2");
+	$('.pageTitle').text("Round 2");
 	$('#description').text("Will your card be higher or lower? Select a button to choose");
 }
 var compareLowerHigher = function() {
@@ -284,7 +284,7 @@ var setupThirdRound = function() {
 	$('.userInputButtons').append(inBetween);
 	$('.userInputButtons').append(outside);
 	$('.userInputButtons').append(onTheFence);
-	$('.pageTitle').text("Up the River | Round 3");
+	$('.pageTitle').text("Round 3");
 	$('#description').text("Will your card be inbetween, outside, or on the fence? Select a button to choose");
 }
 
@@ -359,7 +359,7 @@ var setupFourthRound = function() {
 	$('.userInputButtons').append(clubsButton);
 	$('.userInputButtons').append(diamondsButton);
 	$('.userInputButtons').append(spadesButton);
-	$('.pageTitle').text("Up the River | Round 4");
+	$('.pageTitle').text("Round 4");
 	$('#description').text("What suit will your card be? Select a button to choose");
 }
 
