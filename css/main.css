@@ -13,6 +13,9 @@ h1 {
 	margin-bottom: 0;
     margin-top: .25em;
 }
+h3 {
+	text-align: left;
+}
 #description {
 	text-align: center;
 	max-width: 30em;
@@ -58,9 +61,14 @@ input[type=text]:focus {
 	width: 25em;
 	height: 10em;
 	text-align: center;
+	display: none;
 }
 #ruleButtons {
 	text-align: center;
+	display: none;
+}
+.colorButtons {
+
 }
 .red, .hearts, .diamonds {
 	background-color: red;

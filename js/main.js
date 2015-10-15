@@ -59,10 +59,11 @@ var getPlayerNames = function() {
 }
 
 var getRule = function() {
-	$('.playerNameDiv, #beginGame').hide("slow");
+	$('.playerNameDiv, #beginGame').fadeOut();
 	$('#description').text("Make a rule or punishment for the winner of the game to follow. Be as nice or mean as you dare!");
 	$('#playerArea').append($('<input id="ruleInput" type="text"> <div id="ruleButtons">'));
 	$('#ruleButtons').append($('<button id="myRuleButton"> My Rule is Awesome </button>'));
+	$('#ruleInput, #ruleButtons').delay(400).fadeIn();
 	//<button id="randomRule"> Randomize Me Bro</button>
 }
 
@@ -92,7 +93,7 @@ var setupFirstRound = function() {
 		console.log($gameRule);
 
 		$('#ruleInput, #ruleButtons').hide("slow");
-		$('#description').text("Will your card be red or black? Select a color to choose");
+		$('#description').text("Will your card be red or black? Select a color to choose.");
 		$('.pageTitle').text("Round 1");
 
 		$('#playerArea').append('<div id="playerList">');
