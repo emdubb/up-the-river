@@ -56,14 +56,16 @@ var getPlayerNames = function() {
 		$playersArray.push($playerName6)
 	}
 	console.log($playersArray);
-}
 
-var getRule = function() {
 	$('.playerNameDiv, #beginGame').fadeOut();
-	$('#description').text("Make a rule or punishment for the winner of the game to follow. Be as nice or mean as you dare!");
-	$('#playerArea').append($('<input id="ruleInput" type="text"> <div id="ruleButtons">'));
-	$('#ruleButtons').append($('<button id="myRuleButton"> My Rule is Awesome </button>'));
-	$('#ruleInput, #ruleButtons').delay(400).fadeIn();
+}
+var getRule = function() {
+	
+	// setTimeout(function() {
+		$('#description').text("Make a rule or punishment for the winner of the game to follow. Be as nice or mean as you dare!");
+		$('#playerArea').append($('<input id="ruleInput" type="text"> <div id="ruleButtons">')).hide().fadeIn();
+		$('#ruleButtons').append($('<button id="myRuleButton"> My Rule is Awesome </button>')).hide().fadeIn();
+	// }, 400);
 	//<button id="randomRule"> Randomize Me Bro</button>
 }
 
@@ -92,9 +94,9 @@ var setupFirstRound = function() {
 		$gameRule = $('#ruleInput').val();
 		console.log($gameRule);
 
-		$('#ruleInput, #ruleButtons').hide("slow");
-		$('#description').text("Will your card be red or black? Select a color to choose.");
-		$('.pageTitle').text("Round 1");
+		$('#ruleInput, #ruleButtons').hide();
+		$('#description').text("Will your card be red or black? Select a color to choose.").hide().fadeIn();
+		$('.pageTitle').text("Round 1").hide().fadeIn();
 
 		$('#playerArea').append('<div id="playerList">');
 		for (var i = 0; i < $playersArray.length; i++) {

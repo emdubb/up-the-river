@@ -61,11 +61,9 @@ input[type=text]:focus {
 	width: 25em;
 	height: 10em;
 	text-align: center;
-	display: none;
 }
 #ruleButtons {
 	text-align: center;
-	display: none;
 }
 .colorButtons {
 
