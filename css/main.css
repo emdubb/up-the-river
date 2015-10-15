@@ -7,7 +7,7 @@ h1, h3 {
 	text-transform: uppercase;
 }
 h1 {
-	font-size: 6em;
+	font-size: 5em;
 	text-align: center;
 	color: #03a4ae;
 	margin-bottom: 0;
@@ -18,7 +18,7 @@ h1 {
 	max-width: 30em;
 	width: 100%;
 	margin: auto;
-	margin-bottom: 1em;
+	margin-bottom: 3em;
 }
 input {
 	border: solid 2px #96c590;
@@ -94,7 +94,7 @@ button {
 	color: white;
 	outline: 0;
 	border: 0;
-	margin-top: 1.5em;
+	margin-top: 2em;
 }
 button:hover {
 	background-color: #03a4ae;
