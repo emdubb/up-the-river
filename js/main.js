@@ -100,12 +100,12 @@ var setupFirstRound = function() {
 
 		$('#playerArea').append('<div id="playerList">');
 		for (var i = 0; i < $playersArray.length; i++) {
-			$($('<div>').addClass("player" + i)).appendTo('#playerList');
+			$($('<div>').addClass("player" + i)).appendTo('#playerList').css({clear: "left" });
 			$($('<h3>').text($playersArray[i][0])).appendTo('.player' + i);
 			$($('<p>').attr('id', 'message' + i)).appendTo('.player' + i).css({marginTop: ".3em" });
 			$($('<p>').attr('id', 'points' + i)).appendTo('.player' + i).css({clear: "both" });
 			$($('<div class="pointAdder">').addClass("addPointsButton" + i)).prependTo('.player' + i);
-			$($('<div>').addClass("playerCards" + i)).appendTo('.player' + i);
+			$($('<div>').addClass("playerCards" + i)).appendTo('.player' + i).css({clear: "both"});
 			console.log($playersArray[i]);
 		}
 		$redButton = $('<div class="red">').addClass("colorButtons");
@@ -152,7 +152,7 @@ var setupMainCard = function() {
 
 var addPlayerCard = function() {
 	//-1 is player1 at index 0
-	$mainCard = $($('<div class="card">').addClass(pickRandom)).appendTo('.playerCards' + counter).css({float: "left", clear: "both" });
+	$mainCard = $($('<div class="card">').addClass(pickRandom)).appendTo('.playerCards' + counter).css({float: "left" });
 }
 
 var updatePoints = function() {
