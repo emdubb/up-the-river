@@ -79,6 +79,7 @@ var setupFirstRound = function() {
 			$($('<div>').addClass("player" + i)).appendTo('#playerList');
 			$($('<h3>').text($playersArray[i][0])).appendTo('.player' + i);
 			$($('<p>').attr('id', 'points' + i)).appendTo('.player' + i);
+			$($('<p>').attr('id', 'message' + i)).appendTo('.player' + i);
 			console.log($playersArray[i]);
 		}
 		$redButton = $('<div class="red">').addClass("colorButtons");
@@ -89,6 +90,7 @@ var setupFirstRound = function() {
 }
 
 var determineTurn = function() {
+		$("#message" + counter).hide();
 		counter++;
 		//reset round of turns
 		if (counter > ($playersArray.length - 1)) {
@@ -132,7 +134,7 @@ var setupMainCard = function() {
 
 var addPlayerCard = function() {
 	//-1 is player1 at index 0
-	$($('<div class="card">').addClass(pickRandom)).appendTo('.player' + counter);
+	$mainCard = $($('<div class="card">').addClass(pickRandom)).appendTo('.player' + counter);
 }
 
 var updatePoints = function() {
@@ -140,9 +142,9 @@ var updatePoints = function() {
 }
 
 var playRound1 = function() {
-		//
-			$('.colorButtons').click(function(evt) {
 		
+			$('.colorButtons').click(function(evt) {
+				
 			 	determineTurn();
 			 	addPlayerCard();
 			 	compareColor();
@@ -151,15 +153,19 @@ var playRound1 = function() {
 				$colorTarget = $(evt.target);
 
 				if (($colorTarget).hasClass("red") && cardColor === "red"){
+					$('#message' + counter).append("You were right, now make someone pay.");
 					console.log("Red was the right guess");
 					currentTurn[1] = 0;
 				} else if (($colorTarget).hasClass("red") && cardColor === "black") {
+					$('#message' + counter).append("You were wrong. Drink up bruh.");
 					console.log("Red was the wrong guess");
 					currentTurn[1] = 1;
 				} else if (($colorTarget).hasClass("black") && cardColor === "black") {
+					$('#message' + counter).append("You were right, now make someone pay.");
 					console.log("black was the right guess");
 					currentTurn[1] = 0;
 				} else if (($colorTarget).hasClass("black") && cardColor === "red") {
+					$('#message' + counter).append("You were wrong. Drink up bruh.");
 					console.log("black was the wrong guess");
 					currentTurn[1] = 1;
 				}
@@ -174,6 +180,7 @@ var playRound1 = function() {
 
 //Round 1 compare color
 var compareColor = function() {
+
 	for (i=0; i < redCards.length; i++) {
 		if ($mainCard.hasClass(redCards[i])) {
 			//console.log('card is red AF');
