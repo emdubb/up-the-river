@@ -80,6 +80,7 @@ var setupFirstRound = function() {
 			$($('<h3>').text($playersArray[i][0])).appendTo('.player' + i);
 			$($('<p>').attr('id', 'points' + i)).appendTo('.player' + i);
 			$($('<p>').attr('id', 'message' + i)).appendTo('.player' + i);
+			$($('<div class="pointAdder">').addClass("addPointsButton" + i)).prependTo('.player' + i);
 			console.log($playersArray[i]);
 		}
 		$redButton = $('<div class="red">').addClass("colorButtons");

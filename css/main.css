@@ -31,7 +31,7 @@
 .black:hover, .clubs:hover, .spades:hover {
 	background-color: DimGray;
 }
-.black, .red, .higher, .lower, .tweener, .suitsButtons {
+.black, .red, .higher, .lower, .tweener, .suitsButtons, .pointAdder {
 	width: 3em;
 	height: 3em;
 	border-radius: 1.5em;
@@ -66,4 +66,12 @@ button {
 }
 button:hover {
 	background-color: #157B89;
+}
+.pointAdderVisible {
+	background-color: black;
+	color: white;
+	text-align: center;
+}
+.pointAdderVisible:hover {
+	background-color: DimGray;
 }
