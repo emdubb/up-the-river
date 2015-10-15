@@ -116,21 +116,12 @@ var determineTurn = function() {
 				currentTurn = $playersArray[0];
 				break;
 		}
-	// console.log('current turn is ' + currentTurn);
-	// console.log('counter is ' + counter);
 }
 
 var setupMainCard = function() {
 	$('#playerArea').append('<div id="cardArea">');
 	$('#cardArea').append($mainCard);
 }
-
-// var drawCard = function(){
-			// lastClass = $mainCard.attr('class').split(' ').pop();
-			// $mainCard.removeClass(lastClass);
-			// $mainCard.addClass(pickRandom);
-			// lastClass = $mainCard.attr('class').split(' ').pop();
-// }
 
 var addPlayerCard = function() {
 	//-1 is player1 at index 0
@@ -180,16 +171,13 @@ var playRound1 = function() {
 
 //Round 1 compare color
 var compareColor = function() {
-
 	for (i=0; i < redCards.length; i++) {
 		if ($mainCard.hasClass(redCards[i])) {
-			//console.log('card is red AF');
 			cardColor = "red";
 		}	
 	}
 	for (i=0; i < blackCards.length; i++) {
 		if ($mainCard.hasClass(blackCards[i])) {
-			//console.log('card is black dawg');
 			cardColor = "black";
 		}	
 	}
@@ -207,7 +195,6 @@ var setupSecondRound = function() {
 
 var playRound2 = function() {
 	$('.higherLowerButtons').click(function(evt){
-		// console.log("Start round 2");
 		determineTurn();
 		addPlayerCard();
 		compareLowerHigher();
@@ -250,8 +237,6 @@ var compareLowerHigher = function() {
 
 	var card1 = cardNumbers[$($cards[0]).attr("class").split(" ")[1]];
 	var card2 = cardNumbers[$($cards[1]).attr("class").split(" ")[1]];
-
-	//console.log($cards, card1, card2);
 
 	if (card1 > card2) {
 		cardHighOrLow = "low";
