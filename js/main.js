@@ -61,7 +61,7 @@ var getPlayerNames = function() {
 var getRule = function() {
 	$('.playerNameDiv, #beginGame').hide("slow");
 	$('#description').text("Make a rule or punishment for the winner of the game to follow. Be as nice or mean as you dare!");
-	$('#playerArea').append($('<input id="ruleInput"> <div id="ruleButtons">'));
+	$('#playerArea').append($('<input id="ruleInput" type="text"> <div id="ruleButtons">'));
 	$('#ruleButtons').append($('<button id="myRuleButton"> My Rule is Awesome </button>'));
 	//<button id="randomRule"> Randomize Me Bro</button>
 }

@@ -51,9 +51,16 @@ input[type=text]:focus {
 	margin: 0em 2em;
 	width: 48%;
 }
+#playerArea {
+	text-align: center;
+}
 #ruleInput {
 	width: 25em;
 	height: 10em;
+	text-align: center;
+}
+#ruleButtons {
+	text-align: center;
 }
 .red, .hearts, .diamonds {
 	background-color: red;
