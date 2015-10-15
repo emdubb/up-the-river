@@ -7,14 +7,13 @@ body {
 .card {
   display: inline-block;
   margin:  0.125em;
-  cursor:  pointer;
 
   /* width and height, relative to base size */
   width:  4.0em;
   height: 5.5em;
 
   /* add a default background and border radius */
-  background-color: gray;
+  background-color: white;
   border-radius:    0.20em;
 
   /* scale and place the background */
