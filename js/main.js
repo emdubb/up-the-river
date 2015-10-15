@@ -96,6 +96,7 @@ var setupFirstRound = function() {
 			$($('<p>').attr('id', 'points' + i)).appendTo('.player' + i);
 			$($('<p>').attr('id', 'message' + i)).appendTo('.player' + i);
 			$($('<div class="pointAdder">').addClass("addPointsButton" + i)).prependTo('.player' + i);
+			$($('<div>').addClass("playerCards" + i)).appendTo('.player' + i);
 			console.log($playersArray[i]);
 		}
 		$redButton = $('<div class="red">').addClass("colorButtons");
@@ -142,7 +143,7 @@ var setupMainCard = function() {
 
 var addPlayerCard = function() {
 	//-1 is player1 at index 0
-	$mainCard = $($('<div class="card">').addClass(pickRandom)).appendTo('.player' + counter);
+	$mainCard = $($('<div class="card">').addClass(pickRandom)).appendTo('.playerCards' + counter);
 }
 
 var updatePoints = function() {
@@ -207,7 +208,21 @@ var setupSecondRound = function() {
 	$('.pageTitle').text("Up the River | Round 2");
 	$('#description').text("Will your card be higher or lower? Select a button to choose");
 }
+var compareLowerHigher = function() {
+	var $cards = $(".playerCards" + counter + " div");
+//$(".player" + counter + " div + div")
+	var card1 = cardNumbers[$($cards[0]).attr("class").split(" ")[1]];
+	var card2 = cardNumbers[$($cards[1]).attr("class").split(" ")[1]];
+	console.log($cards, card1, card2);
 
+	if (card1 > card2) {
+		cardHighOrLow = "low";
+	} else if (card1 < card2) {
+		cardHighOrLow = "high";
+	} else  {
+		cardHighOrLow = "even";
+	}
+}
 var playRound2 = function() {
 	$('.higherLowerButtons').click(function(evt){
 		determineTurn();
@@ -218,20 +233,28 @@ var playRound2 = function() {
 
 		if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "low"){
 					$('#message' + counter).append("You were right, now dish out 2 drinks.");
+					currentTurn[1] += 0;
+					console.log("wtf 1");
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "high") {
 					$('#message' + counter).append("You were wrong. Drink up x2 bruh.");
 					currentTurn[1] += 2;
+					console.log("wtf 2");
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "even") {
 					$('#message' + counter).append("Sucks to suck. Drink double(x4).");
-					currentTurn[1] += 3; 
+					currentTurn[1] += 4; 
+					console.log("wtf 3");
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "high") {
 					$('#message' + counter).append("You were right, now dish out 2 drinks.");
+					currentTurn[1] += 0;
+					console.log("wtf 4");
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "low") {
 					$('#message' + counter).append("You were wrong. Drink up x2 bruh.");
 					currentTurn[1] += 2;
+					console.log("wtf 5");
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "even") {
 					$('#message' + counter).append("Sucks to suck. Drink double(x4).");
-					currentTurn[1] += 3;
+					currentTurn[1] += 4;
+					console.log("wtf 6");
 				}
 				updatePoints();
 				//move to next round
@@ -241,20 +264,7 @@ var playRound2 = function() {
 				}
 	});
 }
-var compareLowerHigher = function() {
-	var $cards = $(".player" + counter + " div");
 
-	var card1 = cardNumbers[$($cards[0]).attr("class").split(" ")[1]];
-	var card2 = cardNumbers[$($cards[1]).attr("class").split(" ")[1]];
-
-	if (card1 > card2) {
-		cardHighOrLow = "low";
-	} else if (card1 < card2) {
-		cardHighOrLow ="high";
-	} else {
-		cardHighOrLow="even";
-	}
-}
 var setupThirdRound = function() {
 	$('.higherLowerButtons').hide("slow");
 	inBetween = $('<div class="inBetween">><</div>').addClass("tweener");
@@ -305,7 +315,7 @@ var playRound3 = function() {
 }
 
 var compareTweener = function() {
-	var $cards = $(".player" + counter + " div");
+	var $cards = $(".playerCards" + counter + " div");
 
 	var card1 = cardNumbers[$($cards[0]).attr("class").split(" ")[1]];
 	var card2 = cardNumbers[$($cards[1]).attr("class").split(" ")[1]];
@@ -372,7 +382,7 @@ var playRound4 = function() {
 }
 
 var getSuit = function() {
-	var $cards = $(".player" + counter + " div");
+	var $cards = $(".playerCards" + counter + " div");
 	card4suit = $($cards[3]).attr("class").split(" ")[1][0];
 }
 
