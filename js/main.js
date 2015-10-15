@@ -1,7 +1,9 @@
 console.log("main.js loaded");
 //==========================GLOBAL VARIABLES=======================================
 //var playerPoints = [0, 0, 0, 0, 0, 0]
-var currentTurn, cardColor, $colorTarget, lastClass, cardHighOrLow, inBetween, outside, onTheFence
+var currentTurn, cardColor, $colorTarget, lastClass, 
+	cardHighOrLow, inBetween, outside, onTheFence,
+	cardTweener
 var $mainCard = $('<div id="deckDefault" class="card xlarge back">')
 var redCards = ["dA","dK","dQ","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hK","hQ","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sK","sQ","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
@@ -207,22 +209,20 @@ var playRound2 = function() {
 
 		if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "low"){
 					console.log("Lower was the right guess");
-					//currentTurn[1] = 0;
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "high") {
 					console.log("Lower was the wrong guess");
-					currentTurn[1] = +2;
+					currentTurn[1] += 2;
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "even") {
 					console.log("Its a tie (lguess)");
-					currentTurn[1] = +3; 
+					currentTurn[1] += 3; 
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "high") {
 					console.log("Higher was the right guess");
-					//currentTurn[1] = 0;
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "low") {
 					console.log("Higher was the wrong guess");
-					currentTurn[1] = +2;
+					currentTurn[1] += 2;
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "even") {
 					console.log("Its a tie (hguess)");
-					currentTurn[1] = +3;
+					currentTurn[1] += 3;
 				}
 				updatePoints();
 				//move to next round
@@ -267,6 +267,18 @@ var playRound3 = function() {
 		addPlayerCard();
 		compareTweener();
 
+		tweenerTarget = $(evt.target);
+
+		if ((tweenerTarget).hasClass("inBetween") && cardTweener === "inBetween"){
+					console.log("in between was the right guess");
+				} else if ((tweenerTarget).hasClass("outside") && cardTweener === "outside") {
+					console.log("Outside was the right guess");
+				} else if ((tweenerTarget).hasClass("onTheFence") && cardTweener === "onTheFence") {
+					console.log("On the fence was the right guess");
+				} else {
+					console.log("Wrong guess!");
+					currentTurn[1] += 3; 
+				}
 		updatePoints();
 		//move to next round
 		if (counter > ($playersArray.length -2)) {
@@ -287,10 +299,13 @@ var compareTweener = function() {
 
 	if ((card3 > card2 && card3 > card1) || (card3 < card2 && card3 < card1)) {
 		console.log("card is outside");
+		cardTweener = "outside";
 	} else if (card3 === card2 || card3 === card1){
 		console.log("card is on the fence");
+		cardTweener = "onTheFence";
 	} else {
 		console.log("card is inbetween");
+		cardTweener = "inBetween";
 	}
 }
 
