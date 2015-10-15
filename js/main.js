@@ -228,7 +228,7 @@ var playRound2 = function() {
 				//move to next round
 				if (counter > ($playersArray.length -2)) {
 	 			setupThirdRound();
-				//playRound3();
+				playRound3();
 				}
 	});
 }
@@ -243,6 +243,19 @@ var setupThirdRound = function() {
 	$('#cardArea').append(onTheFence);
 	$('.pageTitle').text("Up the River | Round 3");
 	$('#description').text("Will your card be inbetween, outside, or on the fence? Select a button to choose");
+}
+
+var playRound3 = function() {
+	drawCard();
+	determineTurn();
+	addPlayerCard();
+
+	updatePoints();
+	//move to next round
+	if (counter > ($playersArray.length -2)) {
+	// setupFourthRound();
+	// playRound4();
+	}
 }
 
 var compareLowerHigher = function() {
