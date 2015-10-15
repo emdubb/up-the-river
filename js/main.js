@@ -67,6 +67,7 @@ var getRule = function() {
 
 var giveDrinks = function() {
 	$('.pointAdder').addClass("pointAdderVisible");
+	$('.userInputButtons').hide("slow");
 	$('.pointAdder').unbind().click(function(evt) {
 		$giveDrinksTarget = $(evt.target);
 		var iClass = $giveDrinksTarget.parent().attr('class')[6];
@@ -74,6 +75,7 @@ var giveDrinks = function() {
 			$playersArray[iClass][1] += 1;
 			$('#points' + iClass).text("Drinks: " + $playersArray[iClass][1]);
 			$('.pointAdder').removeClass('pointAdderVisible');
+			$('.userInputButtons').show("slow");
 		} 
 	});
 }
@@ -98,8 +100,8 @@ var setupFirstRound = function() {
 		}
 		$redButton = $('<div class="red">').addClass("colorButtons");
 		$blackButton = $('<div class="black">').addClass("colorButtons");
-		$('#cardArea').append($redButton);
-		$('#cardArea').append($blackButton);
+		$('.userInputButtons').append($redButton);
+		$('.userInputButtons').append($blackButton);
 	//}
 }
 
@@ -134,6 +136,7 @@ var determineTurn = function() {
 
 var setupMainCard = function() {
 	$('#playerArea').append('<div id="cardArea">');
+	$('#cardArea').append('<div class="userInputButtons">')
 	$('#cardArea').append($mainCard);
 }
 
@@ -160,14 +163,14 @@ var playRound1 = function() {
 				if (($colorTarget).hasClass("red") && cardColor === "red"){
 					$('#message' + counter).append("You were right, now make someone pay.");
 					currentTurn[1] += 0;
-					// giveDrinks();
+					giveDrinks();
 				} else if (($colorTarget).hasClass("red") && cardColor === "black") {
 					$('#message' + counter).append("You were wrong. Drink up bruh.");
 					currentTurn[1] += 1;
 				} else if (($colorTarget).hasClass("black") && cardColor === "black") {
 					$('#message' + counter).append("You were right, now make someone pay.");
 					currentTurn[1] += 0;
-					// giveDrinks();
+					giveDrinks();
 				} else if (($colorTarget).hasClass("black") && cardColor === "red") {
 					$('#message' + counter).append("You were wrong. Drink up bruh.");
 					currentTurn[1] += 1;
@@ -199,8 +202,8 @@ var setupSecondRound = function() {
 	$('.colorButtons').hide("slow");
 	$lowerButton = $('<div class="lower">-</div>').addClass("higherLowerButtons");
 	$higherButton = $('<div class="higher">+</div>').addClass("higherLowerButtons");
-	$('#cardArea').append($lowerButton);
-	$('#cardArea').append($higherButton);
+	$('.userInputButtons').append($lowerButton);
+	$('.userInputButtons').append($higherButton);
 	$('.pageTitle').text("Up the River | Round 2");
 	$('#description').text("Will your card be higher or lower? Select a button to choose");
 }
@@ -257,9 +260,9 @@ var setupThirdRound = function() {
 	inBetween = $('<div class="inBetween">><</div>').addClass("tweener");
 	outside = $('<div class="outside"><></div>').addClass("tweener");
 	onTheFence = $('<div class="onTheFence">||</div>').addClass("tweener");
-	$('#cardArea').append(inBetween);
-	$('#cardArea').append(outside);
-	$('#cardArea').append(onTheFence);
+	$('.userInputButtons').append(inBetween);
+	$('.userInputButtons').append(outside);
+	$('.userInputButtons').append(onTheFence);
 	$('.pageTitle').text("Up the River | Round 3");
 	$('#description').text("Will your card be inbetween, outside, or on the fence? Select a button to choose");
 }
@@ -328,10 +331,10 @@ var setupFourthRound = function() {
 	clubsButton = $('<div class="clubs">C</div>').addClass("suitsButtons");
 	spadesButton = $('<div class="spades">S</div>').addClass("suitsButtons");
 	diamondsButton = $('<div class="diamonds">D</div>').addClass("suitsButtons");
-	$('#cardArea').append(heartsButton);
-	$('#cardArea').append(clubsButton);
-	$('#cardArea').append(diamondsButton);
-	$('#cardArea').append(spadesButton);
+	$('.userInputButtons').append(heartsButton);
+	$('.userInputButtons').append(clubsButton);
+	$('.userInputButtons').append(diamondsButton);
+	$('.userInputButtons').append(spadesButton);
 	$('.pageTitle').text("Up the River | Round 4");
 	$('#description').text("What suit will your card be? Select a button to choose");
 }
