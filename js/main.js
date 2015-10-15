@@ -66,18 +66,18 @@ var getRule = function() {
 }
 
 var giveDrinks = function() {
+	$('.pointAdder').addClass("pointAdderVisible");
 	$('.pointAdder').click(function(evt) {
+		console.log("lisenting for click");
 		giveDrinksTarget = $(evt.target);
 
-		if ((giveDrinksTarget).hasClass("addPoints0")){
-			$playersArray[0][1] ++1;
+		if ((giveDrinksTarget).hasClass("addPointsButton0")){
+			$playersArray[0][1] += 1;
 			console.log("add point to player 1", $playersArray[0]);
+			$('#points0').text("Drinks: " + $playersArray[counter][1]);
+			$('.pointAdder').removeClass('pointAdderVisible');
 		} 
-		// else if (($colorTarget).hasClass("red") && cardColor === "black") {
-		// 			$('#message' + counter).append("You were wrong. Drink up bruh.");
-		// 			console.log("Red was the wrong guess");
-		// 			currentTurn[1] = 1;
-		// 		}
+
 
 	});
 }
@@ -147,7 +147,7 @@ var addPlayerCard = function() {
 }
 
 var updatePoints = function() {
-	$('#points' + counter).text("Points: " + $playersArray[counter][1]);
+	$('#points' + counter).text("Drinks: " + $playersArray[counter][1]);
 }
 
 var playRound1 = function() {
@@ -163,19 +163,17 @@ var playRound1 = function() {
 
 				if (($colorTarget).hasClass("red") && cardColor === "red"){
 					$('#message' + counter).append("You were right, now make someone pay.");
-					console.log("Red was the right guess");
 					currentTurn[1] = 0;
+					giveDrinks();
 				} else if (($colorTarget).hasClass("red") && cardColor === "black") {
 					$('#message' + counter).append("You were wrong. Drink up bruh.");
-					console.log("Red was the wrong guess");
 					currentTurn[1] = 1;
 				} else if (($colorTarget).hasClass("black") && cardColor === "black") {
 					$('#message' + counter).append("You were right, now make someone pay.");
-					console.log("black was the right guess");
 					currentTurn[1] = 0;
+					giveDrinks();
 				} else if (($colorTarget).hasClass("black") && cardColor === "red") {
 					$('#message' + counter).append("You were wrong. Drink up bruh.");
-					console.log("black was the wrong guess");
 					currentTurn[1] = 1;
 				}
 				//move to next round
