@@ -19,22 +19,26 @@
 	width: 25em;
 	height: 10em;
 }
-.red {
+.red, .hearts, .diamonds {
 	background-color: red;
 }
-.red:hover {
+.red:hover, .hearts:hover, .diamonds:hover {
 	background-color: Crimson;
 }
-.black {
+.black, .clubs, .spades {
 	background-color: black;
 }
-.black:hover {
+.black:hover, .clubs:hover, .spades:hover {
 	background-color: DimGray;
 }
-.black, .red, .higher, .lower, .tweener{
+.black, .red, .higher, .lower, .tweener, .suitsButtons {
 	width: 3em;
 	height: 3em;
 	border-radius: 1.5em;
+}
+.suitsButtons {
+	color: white;
+	text-align: center;
 }
 .higherLowerButtons, .tweener {
 	background-color: black;

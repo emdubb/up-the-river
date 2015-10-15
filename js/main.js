@@ -317,8 +317,8 @@ var setupFourthRound = function() {
 	diamondsButton = $('<div class="diamonds">D</div>').addClass("suitsButtons");
 	$('#cardArea').append(heartsButton);
 	$('#cardArea').append(clubsButton);
-	$('#cardArea').append(spadesButton);
 	$('#cardArea').append(diamondsButton);
+	$('#cardArea').append(spadesButton);
 	$('.pageTitle').text("Up the River | Round 4");
 	$('#description').text("What suit will your card be? Select a button to choose");
 }
