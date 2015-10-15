@@ -76,7 +76,7 @@ var setupFirstRound = function() {
 		for (var i = 0; i < $playersArray.length; i++) {
 			$($('<div>').addClass("player" + i)).appendTo('#playerList');
 			$($('<h3>').text($playersArray[i][0])).appendTo('.player' + i);
-			$($('<p>').text("Points: ")).appendTo('.player' + i);
+			$($('<p>').attr('id', 'points' + i)).appendTo('.player' + i);
 			console.log($playersArray[i]);
 		}
 		$redButton = $('<div class="red">').addClass("colorButtons");
@@ -132,6 +132,10 @@ var addPlayerCard = function() {
 	$($('<div class="card">').addClass(lastClass)).appendTo('.player' + counter);
 }
 
+var updatePoints = function() {
+	$('#points' + counter).text("Points: " + $playersArray[counter][1]);
+}
+
 var playRound1 = function() {
 		//
 			$('.colorButtons').click(function(evt) {
@@ -157,10 +161,10 @@ var playRound1 = function() {
 					currentTurn[1] = 1;
 				}
 				//move to next round
+				updatePoints();
 				if (counter > ($playersArray.length -2)) {
 				setupSecondRound();
 				playRound2();
-				//$('#playerArea').append('<button class="nextRound">We wanna drink more!</button>');
 				}
 			 });
 }
@@ -220,6 +224,7 @@ var playRound2 = function() {
 					console.log("Its a tie (hguess)");
 					currentTurn[1] = +3;
 				}
+				updatePoints();
 				//move to next round
 				if (counter > ($playersArray.length -2)) {
 	 			setupThirdRound();
