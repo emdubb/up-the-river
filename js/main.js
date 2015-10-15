@@ -1,7 +1,7 @@
 console.log("main.js loaded");
 //==========================GLOBAL VARIABLES=======================================
 //var playerPoints = [0, 0, 0, 0, 0, 0]
-var currentTurn, cardColor, $colorTarget, lastClass, cardHighOrLow
+var currentTurn, cardColor, $colorTarget, lastClass, cardHighOrLow, inBetween, outside, onTheFence
 var $mainCard = $('<div id="deckDefault" class="card xlarge back">')
 var redCards = ["dA","dK","dQ","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hK","hQ","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sK","sQ","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
@@ -206,27 +206,39 @@ var playRound2 = function() {
 					//currentTurn[1] = 0;
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "high") {
 					console.log("Lower was the wrong guess");
-					currentTurn[1] = +1;
+					currentTurn[1] = +2;
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "even") {
 					console.log("Its a tie (lguess)");
-					currentTurn[1] = +2; 
+					currentTurn[1] = +3; 
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "high") {
 					console.log("Higher was the right guess");
 					//currentTurn[1] = 0;
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "low") {
 					console.log("Higher was the wrong guess");
-					currentTurn[1] = +1;
+					currentTurn[1] = +2;
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "even") {
 					console.log("Its a tie (hguess)");
-					currentTurn[1] = +2;
+					currentTurn[1] = +3;
 				}
 				//move to next round
-				//if (counter > ($playersArray.length -2)) {
-				//setupThirdRound();
+				if (counter > ($playersArray.length -2)) {
+	 			setupThirdRound();
 				//playRound3();
+				}
 	});
 }
 
+var setupThirdRound = function() {
+	$('.higherLowerButtons').hide("slow");
+	inBetween = $('<div class="inBetween">><</div>').addClass("tweener");
+	outside = $('<div class="outside"><></div>').addClass("tweener");
+	onTheFence = $('<div class="onTheFence">||</div>').addClass("tweener");
+	$('#cardArea').append(inBetween);
+	$('#cardArea').append(outside);
+	$('#cardArea').append(onTheFence);
+	$('.pageTitle').text("Up the River | Round 3");
+	$('#description').text("Will your card be inbetween, outside, or on the fence? Select a button to choose");
+}
 
 var compareLowerHigher = function() {
 	console.log("compareLowerHigher is running");
