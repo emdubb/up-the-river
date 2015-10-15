@@ -90,7 +90,7 @@ var setupFirstRound = function() {
 }
 
 var determineTurn = function() {
-		$("#message" + counter).hide();
+		$("#message" + counter).text("");
 		counter++;
 		//reset round of turns
 		if (counter > ($playersArray.length - 1)) {
@@ -215,19 +215,25 @@ var playRound2 = function() {
 		higherLowerTarget = $(evt.target);
 
 		if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "low"){
+					$('#message' + counter).append("You were right, now make someone pay.");
 					console.log("Lower was the right guess");
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "high") {
+					$('#message' + counter).append("You were wrong. Drink up bruh.");
 					console.log("Lower was the wrong guess");
 					currentTurn[1] += 2;
 				} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "even") {
+					$('#message' + counter).append("Sucks to suck. Drink double.");
 					console.log("Its a tie (lguess)");
 					currentTurn[1] += 3; 
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "high") {
+					$('#message' + counter).append("You were right, now make someone pay.");
 					console.log("Higher was the right guess");
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "low") {
+					$('#message' + counter).append("You were wrong. Drink up bruh.");
 					console.log("Higher was the wrong guess");
 					currentTurn[1] += 2;
 				} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "even") {
+					$('#message' + counter).append("Sucks to suck. Drink double.");
 					console.log("Its a tie (hguess)");
 					currentTurn[1] += 3;
 				}
