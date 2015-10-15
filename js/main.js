@@ -123,15 +123,16 @@ var setupMainCard = function() {
 	$('#cardArea').append($mainCard);
 }
 
-var drawCard = function(){
-			lastClass = $mainCard.attr('class').split(' ').pop();
-			$mainCard.removeClass(lastClass);
-			$mainCard.addClass(pickRandom);
-			lastClass = $mainCard.attr('class').split(' ').pop();
-}
+// var drawCard = function(){
+			// lastClass = $mainCard.attr('class').split(' ').pop();
+			// $mainCard.removeClass(lastClass);
+			// $mainCard.addClass(pickRandom);
+			// lastClass = $mainCard.attr('class').split(' ').pop();
+// }
+
 var addPlayerCard = function() {
 	//-1 is player1 at index 0
-	$($('<div class="card">').addClass(lastClass)).appendTo('.player' + counter);
+	$($('<div class="card">').addClass(pickRandom)).appendTo('.player' + counter);
 }
 
 var updatePoints = function() {
@@ -141,7 +142,7 @@ var updatePoints = function() {
 var playRound1 = function() {
 		//
 			$('.colorButtons').click(function(evt) {
-			 	drawCard();
+		
 			 	determineTurn();
 			 	addPlayerCard();
 			 	compareColor();
@@ -200,7 +201,6 @@ var setupSecondRound = function() {
 var playRound2 = function() {
 	$('.higherLowerButtons').click(function(evt){
 		// console.log("Start round 2");
-		drawCard();
 		determineTurn();
 		addPlayerCard();
 		compareLowerHigher();
@@ -262,7 +262,6 @@ var setupThirdRound = function() {
 
 var playRound3 = function() {
 	$('.tweener').click(function(evt){
-		drawCard();
 		determineTurn();
 		addPlayerCard();
 		compareTweener();
@@ -326,20 +325,19 @@ var setupFourthRound = function() {
 var playRound4 = function() {
 	console.log("play round 4");
 	$('.suitsButtons').click(function(evt){
-		drawCard();
 		determineTurn();
 		addPlayerCard();
 		getSuit();
 
 		suitsTarget = $(evt.target);
 
-		if ((suitsTarget).hasClass("hearts") && cardTweener === "inBetween"){
+		if ((suitsTarget).hasClass("hearts") && card4suit === "h"){
 					console.log("hearts was the right guess");
-				} else if ((suitsTarget).hasClass("clubs") && cardTweener === "outside") {
+				} else if ((suitsTarget).hasClass("clubs") && card4suit === "c") {
 					console.log("clubs was the right guess");
-				} else if ((suitsTarget).hasClass("diamonds") && cardTweener === "onTheFence") {
+				} else if ((suitsTarget).hasClass("diamonds") && card4suit === "d") {
 					console.log("diamonds was the right guess");
-				} else if ((suitsTarget).hasClass("spades") && cardTweener === "onTheFence") {
+				} else if ((suitsTarget).hasClass("spades") && card4suit === "s") {
 					console.log("spades was the right guess");
 				} else {
 					console.log("Wrong guess!");
@@ -351,14 +349,14 @@ var playRound4 = function() {
 		//move to next round
 		if (counter > ($playersArray.length -2)) {
 		console.log("time to go up the river");
+		$(".suitsButtons").hide("slow");
 		}
 	});
 }
 
 var getSuit = function() {
 	var $cards = $(".player" + counter + " div");
-	card4suit = $($cards[3]).attr("class")[0];
-
+	card4suit = $($cards[3]).attr("class").split(" ")[1][0];
 	console.log($cards, card4suit);
 }
 
