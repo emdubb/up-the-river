@@ -24,6 +24,10 @@ input {
 	border: solid 2px #96c590;
 	font-weight: 300;
 }
+input[type=text]:focus {
+	border: solid 4px #96c590;
+	outline: none;
+}
 .playerNameDiv h3 {
 	display: inline;
 }
