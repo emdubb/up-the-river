@@ -54,6 +54,24 @@ input[type=text]:focus {
 	margin: 0em 2em;
 	width: 48%;
 }
+#playerList p {
+	text-align: left;
+	font-weight: 300;
+	font-size: .9em;
+    margin: 0em;
+}
+#playerList p:first-of-type {
+	display: inline;
+	float: left;
+	margin-left: .5em;
+
+}
+#playerList h3 {
+	margin: 0em;
+	clear: both;
+	display: inline-block;
+    float: left;
+}
 #playerArea {
 	text-align: center;
 }
@@ -65,8 +83,10 @@ input[type=text]:focus {
 #ruleButtons {
 	text-align: center;
 }
-.colorButtons {
 
+.colorButtons {
+	display: inline-block;
+	margin: .5em .75em;
 }
 .red, .hearts, .diamonds {
 	background-color: red;
