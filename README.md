@@ -1,5 +1,12 @@
 #WDI Project 1 | Up the River Game
 
+##About the Game
+
+Up the river is a drinking card game in which players take turns guessing what their next card will be based on the cards that they have already won. Correct guesses are rewarded by dishing out drinks to your friends. Wrong guesses result in the player drinking. The stakes get higher with each rounds. To play simply go to the following link [Up The River][gameLink]
+
+[gameLink]: http://emdubb.github.io/up_the_river/index.html
+
+
 ##Wireframes
 
 The current [wirefame][wireframelink] is desktop only
