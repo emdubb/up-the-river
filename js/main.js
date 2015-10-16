@@ -30,8 +30,6 @@ var cardNumbers = {
 
 //============================GLOBAL FUNCTIONS=====================================
 
-//If player gives drinks on the last round then the next round is not setting up.
-//Show rule at the end
 //Require input at the beginning to start game.
 
 var getPlayerNames = function() {
@@ -186,8 +184,7 @@ var displayTurn = function() {
 			playRound4();
 			console.log("run round 4");
 		} else if (round === 4) {
-			$(".suitsButtons").hide("slow");
-			$('#description').text($gameRule);
+			upTheRiver();
 			console.log("go up the river");
 		} else {
 			console.log("uh wut?");
@@ -457,6 +454,15 @@ var getSuit = function() {
 	card4suit = $($cards[3]).attr("class").split(" ")[1][0];
 }
 
+var upTheRiver = function() {
+	$(".suitsButtons").hide("slow");
+	$('#description').text($gameRule);
+
+	$('#deckDefault').removeClass('back');
+	$('#deckDefault').addClass(pickRandom);
+
+	$('.currentPlayer').text("Cards that match");
+}
 //=========================RUN GAME========================================
 function startGame() {
 	getPlayerNames();
