@@ -81,7 +81,7 @@ var getRule = function() {
 
 var giveDrinks = function(number) {
 	disableInputButtons = true;
-	$('.userInputButtons div').css({backgroundColor: "grey"});
+	$('.userInputButtons div').css({backgroundColor: "#EFF5FB"});
 	// $('.userInputButtons').fadeOut();
 	$('.pointAdder').fadeIn();
 	$('.pointAdder').fadeIn();
@@ -305,9 +305,9 @@ var playRound2 = function() {
 
 var setupThirdRound = function() {
 	$('.higherLowerButtons').hide();
-	inBetween = $('<div class="inBetween">><</div>').addClass("tweener");
-	outside = $('<div class="outside"><></div>').addClass("tweener");
-	onTheFence = $('<div class="onTheFence">||</div>').addClass("tweener");
+	inBetween = $('<div class="inBetween">> <</div>').addClass("tweener");
+	outside = $('<div class="outside">< ></div>').addClass("tweener");
+	onTheFence = $('<div class="onTheFence">| |</div>').addClass("tweener");
 	$('.userInputButtons').append(inBetween);
 	$('.userInputButtons').append(outside);
 	$('.userInputButtons').append(onTheFence);

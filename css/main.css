@@ -93,7 +93,7 @@ input[type=text]:focus {
 
 .colorButtons {
 	display: inline-block;
-	margin: .5em .75em;
+	margin: 15px;
 }
 .red, .hearts, .diamonds {
 	background-color: red;
@@ -108,25 +108,47 @@ input[type=text]:focus {
 	background-color: DimGray;
 }
 .black, .red, .higher, .lower, .tweener, .suitsButtons {
-	width: 3em;
-	height: 3em;
-	border-radius: 1.5em;
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
 }
 .suitsButtons {
 	color: white;
 	text-align: center;
 	display: inline-block;
-	margin: .5em .75em;
+	margin: 15px;
+	font-size: 28px;
+    line-height: 1.75;
 }
-.higherLowerButtons, .tweener {
-	background-color: black;
+.higherLowerButtons {
 	color: white;
 	text-align: center;
 	padding-top: .2em;
 	display: inline-block;
-    margin: .5em .75em;
+    margin: 15px;
     background-color: #96c590;
 	color: white;
+	font-weight: 400;
+    font-size: 36px;
+    line-height: .8;
+}
+.lower {
+	line-height: .65;
+}
+.tweener {
+	color: white;
+	text-align: center;
+	padding-top: .2em;
+	display: inline-block;
+    margin: 15px;
+    background-color: #96c590;
+	color: white;
+	font-weight: 400;
+    font-size: 30px;
+    line-height: 1;
+}
+.onTheFence {
+	line-height: 1.25;
 }
 .higherLowerButtons:hover, .tweener:hover {
 	background-color: #3d5970;
