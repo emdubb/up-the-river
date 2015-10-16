@@ -132,9 +132,6 @@ input[type=text]:focus {
     font-size: 36px;
     line-height: .8;
 }
-.lower {
-	line-height: .65;
-}
 .tweener {
 	color: white;
 	text-align: center;
@@ -146,9 +143,6 @@ input[type=text]:focus {
 	font-weight: 400;
     font-size: 30px;
     line-height: 1;
-}
-.onTheFence {
-	line-height: 1.25;
 }
 .higherLowerButtons:hover, .tweener:hover {
 	background-color: #3d5970;

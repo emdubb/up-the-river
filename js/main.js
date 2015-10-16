@@ -242,7 +242,7 @@ var compareColor = function() {
 
 var setupSecondRound = function() {
 	$('.colorButtons').hide();
-	$lowerButton = $('<div class="lower">-</div>').addClass("higherLowerButtons");
+	$lowerButton = $('<div class="lower">–</div>').addClass("higherLowerButtons");
 	$higherButton = $('<div class="higher">+</div>').addClass("higherLowerButtons");
 	$('.userInputButtons').append($lowerButton);
 	$('.userInputButtons').append($higherButton);
@@ -307,7 +307,7 @@ var setupThirdRound = function() {
 	$('.higherLowerButtons').hide();
 	inBetween = $('<div class="inBetween">> <</div>').addClass("tweener");
 	outside = $('<div class="outside">< ></div>').addClass("tweener");
-	onTheFence = $('<div class="onTheFence">| |</div>').addClass("tweener");
+	onTheFence = $('<div class="onTheFence">I I</div>').addClass("tweener");
 	$('.userInputButtons').append(inBetween);
 	$('.userInputButtons').append(outside);
 	$('.userInputButtons').append(onTheFence);
@@ -420,7 +420,7 @@ var getSuit = function() {
 }
 
 var upTheRiver = function() {
-	$(".suitsButtons").hide("slow");
+	$(".suitsButtons").hide();
 	$('#description').text($gameRule);
 
 	$('#deckDefault').removeClass('back');
