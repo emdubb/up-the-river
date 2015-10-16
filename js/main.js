@@ -55,17 +55,15 @@ var getPlayerNames = function() {
 	if ($playerName6[0]) {
 		$playersArray.push($playerName6)
 	}
-	console.log($playersArray);
-
 	$('.playerNameDiv, #beginGame').fadeOut();
 }
 
-var getRule = function() {
-	
+var getRule = function() { 
 	setTimeout(function() {
 		$('#description').text("Make a rule or punishment for the winner of the game to follow. Be as nice or mean as you dare!");
 		$('#playerArea').append($('<input id="ruleInput" type="text"> <div id="ruleButtons">')).hide().fadeIn();
 		$('#ruleButtons').append($('<button id="myRuleButton"> My Rule is Awesome </button>')).hide().fadeIn();
+		//ICEBOX <button id="randomRule"> Randomize Me Bro</button>
 		$('#myRuleButton').click(function() {
 			setupPlayerTurn();
 			setupMainCard();
@@ -73,8 +71,6 @@ var getRule = function() {
 			playRound1();
 		});	
 	}, 400);
-
-	//<button id="randomRule"> Randomize Me Bro</button>
 }
 
 var giveDrinks = function(number) {
@@ -102,29 +98,24 @@ var giveDrinks = function(number) {
 }
 
 var setupFirstRound = function() {
-	//$('#myRuleButton').click(function() {
-		$gameRule = $('#ruleInput').val();
-		console.log($gameRule);
-
-		$('#ruleInput, #ruleButtons').hide();
-		$('#description').text("Will your card be red or black? Select a color to choose.").hide().fadeIn();
-		$('.pageTitle').text("Round 1").hide().fadeIn();
-
-		$('#playerArea').append('<div id="playerList">');
-		for (var i = 0; i < $playersArray.length; i++) {
-			$($('<div>').addClass("player" + i)).appendTo('#playerList').css({clear: "left" });
-			$($('<h3>').text($playersArray[i][0])).appendTo('.player' + i);
-			$($('<p>').attr('id', 'message' + i)).appendTo('.player' + i).css({marginTop: ".3em" });
-			$($('<p>').attr('id', 'points' + i)).appendTo('.player' + i).css({clear: "both" });
-			$($('<div class="pointAdder">+</div>').addClass("addPointsButton" + i)).prependTo('.player' + i).hide();
-			$($('<div>').addClass("playerCards" + i)).appendTo('.player' + i).css({clear: "both", marginBottom: "8em"});
-			console.log($playersArray[i]);
-		}
-		$redButton = $('<div class="red">').addClass("colorButtons");
-		$blackButton = $('<div class="black">').addClass("colorButtons");
-		$('.userInputButtons').append($redButton);
-		$('.userInputButtons').append($blackButton);
-	//}
+	$gameRule = $('#ruleInput').val();
+	$('#ruleInput, #ruleButtons').hide();
+	$('#description').text("Will your card be red or black? Select a color to choose.").hide().fadeIn();
+	$('.pageTitle').text("Round 1").hide().fadeIn();
+	$('#playerArea').append('<div id="playerList">');
+	for (var i = 0; i < $playersArray.length; i++) {
+		$($('<div>').addClass("player" + i)).appendTo('#playerList').css({clear: "left" });
+		$($('<h3>').text($playersArray[i][0])).appendTo('.player' + i);
+		$($('<p>').attr('id', 'message' + i)).appendTo('.player' + i).css({marginTop: ".3em" });
+		$($('<p>').attr('id', 'points' + i)).appendTo('.player' + i).css({clear: "both" });
+		$($('<div class="pointAdder">+</div>').addClass("addPointsButton" + i)).prependTo('.player' + i).hide();
+		$($('<div>').addClass("playerCards" + i)).appendTo('.player' + i).css({clear: "both", marginBottom: "8em"});
+		console.log($playersArray[i]);
+	}
+	$redButton = $('<div class="red">').addClass("colorButtons");
+	$blackButton = $('<div class="black">').addClass("colorButtons");
+	$('.userInputButtons').append($redButton);
+	$('.userInputButtons').append($blackButton);
 }
 
 var determineTurn = function() {
@@ -155,7 +146,6 @@ var determineTurn = function() {
 			currentTurn = $playersArray[0];
 			break;
 		}
-		console.log("determineTun ran");
 	}
 	var setupPlayerTurn = function() {
 		$('#playerArea').append('<div id="cardArea">');
@@ -272,42 +262,30 @@ var playRound2 = function() {
 			evt.preventDefault();
 			return;
 		}
-
 		determineTurn();
 		addPlayerCard();
 		compareLowerHigher();
-
 		higherLowerTarget = $(evt.target);
-
 		if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "low"){
 			$('#message' + counter).append("You were right, now dish out 2 drinks.");
 			currentTurn[1] += 0;
 			giveDrinks(2);
-
-
-
 		} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "high") {
 			$('#message' + counter).append("You were wrong. Drink up x2 bruh.");
 			currentTurn[1] += 2;
-
 		} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "even") {
 			$('#message' + counter).append("Sucks to suck. Drink double(x4).");
 			currentTurn[1] += 4; 
-
 		} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "high") {
 			$('#message' + counter).append("You were right, now dish out 2 drinks.");
 			currentTurn[1] += 0;
 			giveDrinks(2);
-
-
 		} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "low") {
 			$('#message' + counter).append("You were wrong. Drink up x2 bruh.");
 			currentTurn[1] += 2;
-
 		} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "even") {
 			$('#message' + counter).append("Sucks to suck. Drink double(x4).");
 			currentTurn[1] += 4;
-
 		}
 		updatePoints();
 		displayTurn();
@@ -316,7 +294,7 @@ var playRound2 = function() {
 					setupThirdRound();
 					playRound3();
 				}
-			});
+	});
 }
 
 var setupThirdRound = function() {
