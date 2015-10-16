@@ -6,6 +6,9 @@ body {
 h1, h3 {
 	text-transform: uppercase;
 }
+h2 {
+	color: #96c590;
+}
 h1 {
 	font-size: 5em;
 	text-align: center;
