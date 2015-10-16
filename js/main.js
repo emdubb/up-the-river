@@ -305,9 +305,9 @@ var playRound2 = function() {
 
 var setupThirdRound = function() {
 	$('.higherLowerButtons').hide();
-	inBetween = $('<div class="inBetween">> <</div>').addClass("tweener");
-	outside = $('<div class="outside">< ></div>').addClass("tweener");
-	onTheFence = $('<div class="onTheFence">I I</div>').addClass("tweener");
+	inBetween = $('<div class="inBetween"></div>').addClass("tweener");
+	outside = $('<div class="outside"></div>').addClass("tweener");
+	onTheFence = $('<div class="onTheFence"></div>').addClass("tweener");
 	$('.userInputButtons').append(inBetween);
 	$('.userInputButtons').append(outside);
 	$('.userInputButtons').append(onTheFence);
@@ -370,10 +370,10 @@ var compareTweener = function() {
 
 var setupFourthRound = function() {
 	$('.tweener').hide();
-	heartsButton = $('<div class="hearts">H</div>').addClass("suitsButtons");
-	clubsButton = $('<div class="clubs">C</div>').addClass("suitsButtons");
-	spadesButton = $('<div class="spades">S</div>').addClass("suitsButtons");
-	diamondsButton = $('<div class="diamonds">D</div>').addClass("suitsButtons");
+	heartsButton = $('<div class="hearts"></div>').addClass("suitsButtons");
+	clubsButton = $('<div class="clubs"></div>').addClass("suitsButtons");
+	spadesButton = $('<div class="spades"></div>').addClass("suitsButtons");
+	diamondsButton = $('<div class="diamonds"></div>').addClass("suitsButtons");
 	$('.userInputButtons').append(heartsButton);
 	$('.userInputButtons').append(clubsButton);
 	$('.userInputButtons').append(diamondsButton);

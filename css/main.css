@@ -144,9 +144,29 @@ input[type=text]:focus {
     font-size: 30px;
     line-height: 1;
 }
+.outside {
+	background-image: url(../images/buttons/outside.svg);
+}
+.inBetween {
+	background-image: url(../images/buttons/inside.svg);
+}
+.onTheFence {
+	background-image: url(../images/buttons/fence.svg);
+}
+.hearts {
+	background-image: url(../images/buttons/hearts.svg);
+}
+.diamonds {
+	background-image: url(../images/buttons/diamonds.svg);
+}
+.clubs {
+	background-image: url(../images/buttons/clubs.svg);
+}
+.spades {
+	background-image: url(../images/buttons/spades.svg);
+}
 .higherLowerButtons:hover, .tweener:hover {
 	background-color: #3d5970;
-
 }
 #cardArea {
 	display: inline;
