@@ -1,7 +1,7 @@
 console.log("main.js loaded");
 //==========================GLOBAL VARIABLES=======================================
 //var playerPoints = [0, 0, 0, 0, 0, 0]
-var currentTurn, cardColor, $colorTarget, lastClass, giveDrinksTarget,
+var currentTurn, cardColor, $colorTarget, lastClass, giveDrinksTarget, disableInputButtons,
 	cardHighOrLow, inBetween, outside, onTheFence, cardTweener,
 	heartsButton, spadesButton, diamondsButton, clubsButton, card4suit
 var $mainCard = $('<div id="deckDefault" class="card xlarge back">')
@@ -59,18 +59,28 @@ var getPlayerNames = function() {
 
 	$('.playerNameDiv, #beginGame').fadeOut();
 }
+
 var getRule = function() {
 	
-	// setTimeout(function() {
+	 setTimeout(function() {
 		$('#description').text("Make a rule or punishment for the winner of the game to follow. Be as nice or mean as you dare!");
 		$('#playerArea').append($('<input id="ruleInput" type="text"> <div id="ruleButtons">')).hide().fadeIn();
 		$('#ruleButtons').append($('<button id="myRuleButton"> My Rule is Awesome </button>')).hide().fadeIn();
-	// }, 400);
+		$('#myRuleButton').click(function() {
+		 	setupPlayerTurn();
+		 	setupMainCard();
+		 	setupFirstRound();
+		 	playRound1();
+		});	
+	 }, 400);
+
 	//<button id="randomRule"> Randomize Me Bro</button>
 }
 
 var giveDrinks = function(number) {
-	$('.userInputButtons').fadeOut();
+	disableInputButtons = true;
+	$('.userInputButtons div').css({backgroundColor: "grey"});
+	// $('.userInputButtons').fadeOut();
 	$('.pointAdder').fadeIn();
 	$('.pointAdder').fadeIn();
 	$('.pointAdder').unbind().click(function(evt) {
@@ -83,7 +93,9 @@ var giveDrinks = function(number) {
 		} 
 		if (number === numberDrinks) {
 			$('.pointAdder').fadeOut();
-			$('.userInputButtons').fadeIn();
+			// $('.userInputButtons').fadeIn();
+			$('.userInputButtons div').css({backgroundColor: ""});
+			disableInputButtons = false;
 			numberDrinks = 0;
 		}
 	});
@@ -116,6 +128,7 @@ var setupFirstRound = function() {
 }
 
 var determineTurn = function() {
+
 		$("#message" + counter).text("");
 		counter++;
 		//reset round of turns
@@ -142,20 +155,31 @@ var determineTurn = function() {
 				currentTurn = $playersArray[0];
 				break;
 		}
+	console.log("determineTun ran");
 }
 var setupPlayerTurn = function() {
 	$('#playerArea').append('<div id="cardArea">');
 	$('#cardArea').append('<h2 class="currentPlayer">');
 	$('.currentPlayer').text("It's " + $playersArray[0][0] + "'s Turn");
+	$('#description').remove();
+	$('#cardArea').append('<div id="description">')
 }
 var setupMainCard = function() {
 	$('#cardArea').append('<div class="userInputButtons">')
 	$('#cardArea').append($mainCard);
 }
+var displayTurn = function() {
+	if (counter === $playersArray.length -1) {
+		$('.currentPlayer').text("It's " + $playersArray[0][0] + "'s Turn");
+	} else {
+		$('.currentPlayer').text("It's " + $playersArray[counter + 1][0] + "'s Turn");
+	}
+}
 
 var addPlayerCard = function() {
 	//-1 is player1 at index 0
 	$mainCard = $($('<div class="card">').addClass(pickRandom)).appendTo('.playerCards' + counter).css({float: "left" });
+	console.log("addPlayerCard ran");
 }
 
 var updatePoints = function() {
@@ -165,6 +189,10 @@ var updatePoints = function() {
 var playRound1 = function() {
 		
 			$('.colorButtons').click(function(evt) {
+				if (disableInputButtons) {
+					evt.preventDefault();
+					return;
+				}
 				
 			 	determineTurn();
 			 	addPlayerCard();
@@ -190,6 +218,8 @@ var playRound1 = function() {
 				}
 				//move to next round
 				updatePoints();
+				displayTurn();
+
 				if (counter > ($playersArray.length -2)) {
 				setupSecondRound();
 				playRound2();
@@ -209,6 +239,7 @@ var compareColor = function() {
 			cardColor = "black";
 		}	
 	}
+	console.log("compareColor ran");
 }
 
 var setupSecondRound = function() {
@@ -237,6 +268,11 @@ var compareLowerHigher = function() {
 }
 var playRound2 = function() {
 	$('.higherLowerButtons').click(function(evt){
+		if (disableInputButtons) {
+			evt.preventDefault();
+			return;
+		}
+
 		determineTurn();
 		addPlayerCard();
 		compareLowerHigher();
@@ -274,6 +310,7 @@ var playRound2 = function() {
 					
 				}
 				updatePoints();
+				displayTurn();
 				//move to next round
 				if (counter > ($playersArray.length -2)) {
 	 			setupThirdRound();
@@ -296,6 +333,10 @@ var setupThirdRound = function() {
 
 var playRound3 = function() {
 	$('.tweener').click(function(evt){
+		if (disableInputButtons) {
+			evt.preventDefault();
+			return;
+		}
 		determineTurn();
 		addPlayerCard();
 		compareTweener();
@@ -312,6 +353,7 @@ var playRound3 = function() {
 					giveDrinks(3);
 				} else if ((tweenerTarget).hasClass("onTheFence") && cardTweener === "onTheFence") {
 					$('#message' + counter).append("You were right you handsome devil, now dish out double(6).");
+					//currently does not allow dishing out 6
 					console.log("On the fence was the right guess");
 					giveDrinks(3);
 				} else if ((tweenerTarget).hasClass("inBetween") && cardTweener === "onTheFence") {
@@ -326,6 +368,7 @@ var playRound3 = function() {
 					currentTurn[1] += 3; 
 				}
 		updatePoints();
+		displayTurn();
 		//move to next round
 		if (counter > ($playersArray.length -2)) {
 		setupFourthRound();
@@ -372,6 +415,10 @@ var setupFourthRound = function() {
 var playRound4 = function() {
 	console.log("play round 4");
 	$('.suitsButtons').click(function(evt){
+		if (disableInputButtons) {
+		evt.preventDefault();
+		return;
+		}
 		determineTurn();
 		addPlayerCard();
 		getSuit();
@@ -397,6 +444,7 @@ var playRound4 = function() {
 
 
 		updatePoints();
+		displayTurn();
 		//move to next round
 		if (counter > ($playersArray.length -2)) {
 		console.log("time to go up the river");
@@ -414,15 +462,7 @@ var getSuit = function() {
 function startGame() {
 	getPlayerNames();
 	getRule();
-	$('#myRuleButton').click(function() {
-	 	setupPlayerTurn();
-	 	setupMainCard();
-	 	setupFirstRound();
-	 	playRound1();
-	});
-	
 }
-
 
 
 $('#beginGame').click(startGame);
