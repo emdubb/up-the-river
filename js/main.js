@@ -58,10 +58,11 @@ var getPlayerNames = function() {
 	if ($playerName6[0]) {
 		$playersArray.push($playerName6)
 	}
-	$('.playerNameDiv, #beginGame').fadeOut();
+	
 }
 
 var getRule = function() { 
+	$('.playerNameDiv, #beginGame').fadeOut();
 	setTimeout(function() {
 		$('#description').text("Make a rule or punishment for the winner of the game to follow. Be as nice or mean as you dare!");
 		$('#playerArea').append($('<input id="ruleInput" type="text"> <div id="ruleButtons">')).hide().fadeIn();
@@ -427,11 +428,18 @@ var upTheRiver = function() {
 }
 //=========================RUN GAME========================================
 function startGame() {
-	getPlayerNames();
+	
 	getRule();
 }
 
 
-$('#beginGame').click(startGame);
+$('#beginGame').click(function() {
+	getPlayerNames();
+	if ($playersArray.length > 1) {
+		startGame();
+	} else {
+		window.alert("Woah, nobody likes to drink alone! Grab some friends and add thier names.");
+	}
+});
 
 
