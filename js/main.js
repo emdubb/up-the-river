@@ -5,7 +5,7 @@ var currentTurn, cardColor, $colorTarget, lastClass, giveDrinksTarget, disableIn
 	cardHighOrLow, inBetween, outside, onTheFence, cardTweener,
 	heartsButton, spadesButton, diamondsButton, clubsButton, card4suit,
 	$playersArray, $playerName1, $playerName2, $playerName3, $playerName4, $playerName5, $playerName6,
-	$gameRule, $redButton, $blackButton, $lowerButton, $higherButton, wait
+	$gameRule, $redButton, $blackButton, $lowerButton, $higherButton, shouldWait, round
 var $mainCard = $('<div id="deckDefault" class="card xlarge back">')
 var redCards = ["dA","dK","dQ","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hK","hQ","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02"]
 var blackCards = ["cA","cK","cQ","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sK","sQ","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
@@ -29,6 +29,11 @@ var cardNumbers = {
 
 
 //============================GLOBAL FUNCTIONS=====================================
+
+//If player gives drinks on the last round then the next round is not setting up.
+//Show rule at the end
+//Require input at the beginning to start game.
+
 var getPlayerNames = function() {
 	$playersArray = []
 	$playerName1 = [$('#player-name1').val(), 0]
@@ -162,8 +167,29 @@ var setupMainCard = function() {
 var displayTurn = function() {
 	if (counter === $playersArray.length -1) {
 		$('.currentPlayer').text("It's " + $playersArray[0][0] + "'s Turn");
+		shouldWait = "no";
 	} else {
 		$('.currentPlayer').text("It's " + $playersArray[counter + 1][0] + "'s Turn");
+		shouldWait = "yes";
+	}
+	if (counter > ($playersArray.length -2) && shouldWait === "no") {
+		if (round === 1) {
+			setupSecondRound();
+			playRound2();
+			console.log("run round 2");
+		} else if (round === 2) {
+			setupThirdRound();
+			playRound3();
+			console.log("run round 3");
+		} else if (round === 3) {
+			setupFourthRound();
+			playRound4();
+			console.log("run round 4");
+		} else if (round === 4) {
+			console.log("go up the river")
+		} else {
+			console.log("uh wut?");
+		}
 	}
 }
 var addPlayerCard = function() {
@@ -181,9 +207,9 @@ var playRound1 = function() {
 	$('.colorButtons').click(function(evt) {
 		if (disableInputButtons) {
 			evt.preventDefault();
-
 			return;
 		}
+		round = 1;
 		determineTurn();
 		addPlayerCard();
 		compareColor();
@@ -208,10 +234,10 @@ var playRound1 = function() {
 		}
 		//move to next round
 		updatePoints();
-		if (counter > ($playersArray.length -2)) {
-			setupSecondRound();
-			playRound2();
-		}
+		// if (counter > ($playersArray.length -2) && shouldWait === "no") {
+		// 	setupSecondRound();
+		// 	playRound2();
+		// }
 	});
 }
 
@@ -260,6 +286,7 @@ var playRound2 = function() {
 			evt.preventDefault();
 			return;
 		}
+		round = 2;
 		determineTurn();
 		addPlayerCard();
 		compareLowerHigher();
@@ -291,10 +318,11 @@ var playRound2 = function() {
 		}
 		updatePoints();
 		//move to next round
-		if (counter > ($playersArray.length -2)) {
-			setupThirdRound();
-			playRound3();
-		}
+		// if (counter > ($playersArray.length -2) && shouldWait === "no") {
+		// 	console.log("loop is true");
+		// 	setupThirdRound();
+		// 	playRound3();
+		// }
 	});
 }
 
@@ -316,6 +344,7 @@ var playRound3 = function() {
 			evt.preventDefault();
 			return;
 		}
+		round = 3;
 		determineTurn();
 		addPlayerCard();
 		compareTweener();
@@ -345,10 +374,10 @@ var playRound3 = function() {
 		}
 		updatePoints();
 		//move to next round
-		if (counter > ($playersArray.length -2)) {
-			setupFourthRound();
-			playRound4();
-		}
+		// if (counter > ($playersArray.length -2) && shouldWait === "no") {
+		// 	setupFourthRound();
+		// 	playRound4();
+		// }
 	});
 }
 
@@ -390,6 +419,7 @@ var playRound4 = function() {
 			evt.preventDefault();
 			return;
 		}
+		round = 4;
 		determineTurn();
 		addPlayerCard();
 		getSuit();
@@ -413,7 +443,7 @@ var playRound4 = function() {
 		}
 		updatePoints();
 		//move to next round
-		if (counter > ($playersArray.length -2)) {
+		if (counter > ($playersArray.length -2) && shouldWait === "no") {
 			console.log("time to go up the river");
 			$(".suitsButtons").hide("slow");
 		}
