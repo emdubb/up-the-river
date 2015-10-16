@@ -69,10 +69,14 @@ var getRule = function() {
 		$('#ruleButtons').append($('<button id="myRuleButton"> My Rule is Awesome </button>')).hide().fadeIn();
 		//ICEBOX <button id="randomRule"> Randomize Me Bro</button>
 		$('#myRuleButton').click(function() {
-			setupPlayerTurn();
-			setupMainCard();
-			setupFirstRound();
-			playRound1();
+			if ($('#ruleInput').val() === "") { 
+				window.alert("Are you drunk already? Make sure you enter a rule!");
+			} else {
+				setupPlayerTurn();
+				setupMainCard();
+				setupFirstRound();
+				playRound1(); 
+			}
 		});	
 	}, 400);
 }
