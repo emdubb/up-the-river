@@ -30,8 +30,6 @@ var cardNumbers = {
 
 //============================GLOBAL FUNCTIONS=====================================
 
-//Require input at the beginning to start game.
-
 var getPlayerNames = function() {
 	$playersArray = []
 	$playerName1 = [$('#player-name1').val(), 0]
@@ -281,11 +279,11 @@ var playRound2 = function() {
 			currentTurn[1] += 0;
 			giveDrinks(2);
 		} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "high") {
-			$('#message' + counter).append("You were wrong. Drink up x2 bruh.");
+			$('#message' + counter).append("You were wrong. Drink x2 bruh.");
 			currentTurn[1] += 2;
 			displayTurn();
 		} else if ((higherLowerTarget).hasClass("lower") && cardHighOrLow === "even") {
-			$('#message' + counter).append("Sucks to suck. Drink double(x4).");
+			$('#message' + counter).append("Sucks to suck. Drink double (x4).");
 			currentTurn[1] += 4; 
 			displayTurn();
 		} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "high") {
@@ -293,11 +291,11 @@ var playRound2 = function() {
 			currentTurn[1] += 0;
 			giveDrinks(2);
 		} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "low") {
-			$('#message' + counter).append("You were wrong. Drink up x2 bruh.");
+			$('#message' + counter).append("You were wrong. Drink x2 bruh.");
 			currentTurn[1] += 2;
 			displayTurn();
 		} else if ((higherLowerTarget).hasClass("higher") && cardHighOrLow === "even") {
-			$('#message' + counter).append("Sucks to suck. Drink double(x4).");
+			$('#message' + counter).append("Sucks to suck. Drink double (x4).");
 			currentTurn[1] += 4;
 			displayTurn();
 		}
@@ -335,19 +333,19 @@ var playRound3 = function() {
 			$('#message' + counter).append("You were right, now dish out 3 drinks.");
 			giveDrinks(3);
 		} else if ((tweenerTarget).hasClass("onTheFence") && cardTweener === "onTheFence") {
-			$('#message' + counter).append("You were right you handsome devil, now dish out double(6).");
+			$('#message' + counter).append("You were right you handsome devil, now dish out double (x6).");
 			//currently does not allow dishing out 6
 			giveDrinks(3);
 		} else if ((tweenerTarget).hasClass("inBetween") && cardTweener === "onTheFence") {
-			$('#message' + counter).append("Sucks to suck. Drink double(x6).");
+			$('#message' + counter).append("Sucks to suck. Drink double (x6).");
 			currentTurn[1] += 6;
 			displayTurn();
 		} else if ((tweenerTarget).hasClass("outside") && cardTweener === "onTheFence") {
-			$('#message' + counter).append("Sucks to suck. Drink double(x6).");
+			$('#message' + counter).append("Sucks to suck. Drink double (x6).");
 			currentTurn[1] += 6;
 			displayTurn();
 		} else {
-			$('#message' + counter).append("You were wrong. Drink up x3 bruh.");
+			$('#message' + counter).append("You were wrong. Drink x3 bruh.");
 			currentTurn[1] += 3;
 			displayTurn(); 
 		}
@@ -408,7 +406,7 @@ var playRound4 = function() {
 			$('#message' + counter).append("You were right, now dish out 4 drinks.");
 			giveDrinks(4);
 		} else {
-			$('#message' + counter).append("You were wrong. Drink up x4 bruh.");
+			$('#message' + counter).append("You were wrong. Drink x4 bruh.");
 			currentTurn[1] += 4; 
 			displayTurn();
 		}
@@ -428,7 +426,7 @@ var upTheRiver = function() {
 	$('#deckDefault').removeClass('back');
 	$('#deckDefault').addClass(pickRandom);
 
-	$('.currentPlayer').text("Cards that match");
+	$('.currentPlayer').text("If you have a card with the same number as the one displayed then follow the rule listed. Bottoms up!");
 }
 //=========================RUN GAME========================================
 function startGame() {
