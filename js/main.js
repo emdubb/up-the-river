@@ -114,7 +114,6 @@ var setupFirstRound = function() {
 		$($('<p>').attr('id', 'points' + i)).appendTo('.player' + i).css({clear: "both" });
 		$($('<div class="pointAdder">+</div>').addClass("addPointsButton" + i)).prependTo('.player' + i).hide();
 		$($('<div>').addClass("playerCards" + i)).appendTo('.player' + i).css({clear: "both", marginBottom: "8em"});
-		console.log($playersArray[i]);
 	}
 	$redButton = $('<div class="red">').addClass("colorButtons");
 	$blackButton = $('<div class="black">').addClass("colorButtons");
@@ -123,7 +122,6 @@ var setupFirstRound = function() {
 }
 
 var determineTurn = function() {
-
 	$("#message" + counter).text("");
 	counter++;
 		//reset round of turns
@@ -159,7 +157,7 @@ var setupPlayerTurn = function() {
 	$('#cardArea').append('<div id="description">')
 }
 var setupMainCard = function() {
-	$('#cardArea').append('<div class="userInputButtons">')
+	$('#cardArea').append('<div class="userInputButtons">');
 	$('#cardArea').append($mainCard);
 }
 var displayTurn = function() {
@@ -174,27 +172,19 @@ var displayTurn = function() {
 		if (round === 1) {
 			setupSecondRound();
 			playRound2();
-			console.log("run round 2");
 		} else if (round === 2) {
 			setupThirdRound();
 			playRound3();
-			console.log("run round 3");
 		} else if (round === 3) {
 			setupFourthRound();
 			playRound4();
-			console.log("run round 4");
 		} else if (round === 4) {
 			upTheRiver();
-			console.log("go up the river");
-		} else {
-			console.log("uh wut?");
 		}
 	}
 }
 var addPlayerCard = function() {
-	//-1 is player1 at index 0
 	$mainCard = $($('<div class="card">').addClass(pickRandom)).appendTo('.playerCards' + counter).css({float: "left" });
-	console.log("addPlayerCard ran");
 }
 
 var updatePoints = function() {
@@ -202,7 +192,6 @@ var updatePoints = function() {
 }
 
 var playRound1 = function() {
-
 	$('.colorButtons').click(function(evt) {
 		if (disableInputButtons) {
 			evt.preventDefault();
@@ -212,7 +201,6 @@ var playRound1 = function() {
 		determineTurn();
 		addPlayerCard();
 		compareColor();
-		//console.log(evt.target);
 		$colorTarget = $(evt.target);
 		if (($colorTarget).hasClass("red") && cardColor === "red"){
 			$('#message' + counter).append("You were right, now dish out a drink.");
@@ -233,14 +221,9 @@ var playRound1 = function() {
 		}
 		//move to next round
 		updatePoints();
-		// if (counter > ($playersArray.length -2) && shouldWait === "no") {
-		// 	setupSecondRound();
-		// 	playRound2();
-		// }
 	});
 }
 
-//Round 1 compare color
 var compareColor = function() {
 	for (i=0; i < redCards.length; i++) {
 		if ($mainCard.hasClass(redCards[i])) {
@@ -252,7 +235,6 @@ var compareColor = function() {
 			cardColor = "black";
 		}	
 	}
-	console.log("compareColor ran");
 }
 
 var setupSecondRound = function() {
@@ -264,21 +246,20 @@ var setupSecondRound = function() {
 	$('.pageTitle').text("Round 2");
 	$('#description').text("Will your card be higher or lower? Select a button to choose.");
 }
+
 var compareLowerHigher = function() {
 	var $cards = $(".playerCards" + counter + " div");
-//$(".player" + counter + " div + div")
-var card1 = cardNumbers[$($cards[0]).attr("class").split(" ")[1]];
-var card2 = cardNumbers[$($cards[1]).attr("class").split(" ")[1]];
-console.log($cards, card1, card2);
+	var card1 = cardNumbers[$($cards[0]).attr("class").split(" ")[1]];
+	var card2 = cardNumbers[$($cards[1]).attr("class").split(" ")[1]];
+	if (card1 > card2) {
+		cardHighOrLow = "low";
+	} else if (card1 < card2) {
+		cardHighOrLow = "high";
+	} else  {
+		cardHighOrLow = "even";
+	}
+}
 
-if (card1 > card2) {
-	cardHighOrLow = "low";
-} else if (card1 < card2) {
-	cardHighOrLow = "high";
-} else  {
-	cardHighOrLow = "even";
-}
-}
 var playRound2 = function() {
 	$('.higherLowerButtons').click(function(evt){
 		if (disableInputButtons) {
@@ -316,12 +297,6 @@ var playRound2 = function() {
 			displayTurn();
 		}
 		updatePoints();
-		//move to next round
-		// if (counter > ($playersArray.length -2) && shouldWait === "no") {
-		// 	console.log("loop is true");
-		// 	setupThirdRound();
-		// 	playRound3();
-		// }
 	});
 }
 
@@ -372,11 +347,6 @@ var playRound3 = function() {
 			displayTurn(); 
 		}
 		updatePoints();
-		//move to next round
-		// if (counter > ($playersArray.length -2) && shouldWait === "no") {
-		// 	setupFourthRound();
-		// 	playRound4();
-		// }
 	});
 }
 
@@ -387,13 +357,10 @@ var compareTweener = function() {
 	var card3 = cardNumbers[$($cards[2]).attr("class").split(" ")[1]];
 
 	if ((card3 > card2 && card3 > card1) || (card3 < card2 && card3 < card1)) {
-		console.log("card is outside");
 		cardTweener = "outside";
 	} else if (card3 === card2 || card3 === card1){
-		console.log("card is on the fence");
 		cardTweener = "onTheFence";
 	} else {
-		console.log("card is inbetween");
 		cardTweener = "inBetween";
 	}
 }
@@ -441,11 +408,6 @@ var playRound4 = function() {
 			displayTurn();
 		}
 		updatePoints();
-		//move to next round
-		// if (counter > ($playersArray.length -2) && shouldWait === "no") {
-		// 	console.log("time to go up the river");
-		// 	$(".suitsButtons").hide("slow");
-		// }
 	});
 }
 
