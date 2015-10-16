@@ -186,7 +186,9 @@ var displayTurn = function() {
 			playRound4();
 			console.log("run round 4");
 		} else if (round === 4) {
-			console.log("go up the river")
+			$(".suitsButtons").hide("slow");
+			$('#description').text($gameRule);
+			console.log("go up the river");
 		} else {
 			console.log("uh wut?");
 		}
@@ -263,7 +265,7 @@ var setupSecondRound = function() {
 	$('.userInputButtons').append($lowerButton);
 	$('.userInputButtons').append($higherButton);
 	$('.pageTitle').text("Round 2");
-	$('#description').text("Will your card be higher or lower? Select a button to choose");
+	$('#description').text("Will your card be higher or lower? Select a button to choose.");
 }
 var compareLowerHigher = function() {
 	var $cards = $(".playerCards" + counter + " div");
@@ -335,7 +337,7 @@ var setupThirdRound = function() {
 	$('.userInputButtons').append(outside);
 	$('.userInputButtons').append(onTheFence);
 	$('.pageTitle').text("Round 3");
-	$('#description').text("Will your card be inbetween, outside, or on the fence? Select a button to choose");
+	$('#description').text("Will your card be inbetween, outside, or on the fence? Select a button to choose.");
 }
 
 var playRound3 = function() {
@@ -410,7 +412,7 @@ var setupFourthRound = function() {
 	$('.userInputButtons').append(diamondsButton);
 	$('.userInputButtons').append(spadesButton);
 	$('.pageTitle').text("Round 4");
-	$('#description').text("What suit will your card be? Select a button to choose");
+	$('#description').text("What suit will your card be? Select a button to choose.");
 }
 
 var playRound4 = function() {
@@ -443,10 +445,10 @@ var playRound4 = function() {
 		}
 		updatePoints();
 		//move to next round
-		if (counter > ($playersArray.length -2) && shouldWait === "no") {
-			console.log("time to go up the river");
-			$(".suitsButtons").hide("slow");
-		}
+		// if (counter > ($playersArray.length -2) && shouldWait === "no") {
+		// 	console.log("time to go up the river");
+		// 	$(".suitsButtons").hide("slow");
+		// }
 	});
 }
 
