@@ -10,10 +10,10 @@ h2 {
 	color: #96c590;
 }
 h1 {
-	font-size: 5em;
+	font-size: 4em;
 	text-align: center;
 	color: #03a4ae;
-	margin-bottom: 0;
+	margin-bottom: .5em;
     margin-top: .25em;
 }
 
@@ -55,7 +55,7 @@ input[type=text]:focus {
 #playerList {
 	display: inline;
 	float: left;
-	margin: 0em 2em;
+	margin: 3em 2em 0em;
 	width: 48%;
 	height: 100vh;
 	overflow: scroll;
@@ -79,6 +79,8 @@ input[type=text]:focus {
 }
 #playerArea {
 	text-align: center;
+	width: 90%;
+	margin: auto;
 }
 #ruleInput {
 	width: 25em;

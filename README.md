@@ -18,7 +18,7 @@ The current [wirefame][wireframelink] is desktop only
 - [x] As a player, I want to know if I won or lost the round. 
 - [x] As a player, if I lost then I want to receive a drink. If I won then I do not want to recieve a drink.
 - [ ] As a group of players, I want to see the top card and if I have a card with the same value I will follow the rule or punishment.
-- [ ] As a group of players, I don't want to be able to start the game until I have provided the proper input.
+- [x] As a group of players, I don't want to be able to start the game until I have provided the proper input.
 - [x] As a player, I want a visual represenation of who's turn it is.
 
 ### Icebox
